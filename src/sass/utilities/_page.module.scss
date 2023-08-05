@@ -5,17 +5,15 @@
 .page{
     width: 100%;
     margin: auto;
-    min-height: 100vh;
-    justify-content: center;
-    height: auto;
+    justify-content: space-around;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 20px;
 }
 
 .page-image{
-    height: 60vh;
-    margin: 2em auto;
+    height: 56vh;
 }
 
 .page-title{
@@ -48,22 +46,12 @@
     }
 }
 
-@media screen and (min-width: 576px){
-    .page-title{
-        font-size: 4em;
-    }
-
-    .page-about{
-        font-size: 1.2em;
-    }
-}
-
 @media screen and (min-width: 776px){
-    .page-image{
-        width: 40vw;
+    .page-title{
+        font-size: 3em;
     }
 
-    .page{
-        flex-direction: row;
+    .page-button{
+        width: 300px;
     }
 }
