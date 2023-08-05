@@ -1,22 +1,16 @@
 export default function Home() {
   return (
     <main className="page">
+      <h1 className="page-title">
+        ONE.
+        <br /> SAVED LIST
+      </h1>
       <img
         className="page-image"
-        src="illustration/Woman-Phone-Ilustration.png"
+        src="illustration/illustration-small-size.svg"
       />
 
-      <section className="page-group">
-        <h1 className="page-title">
-          Modern <br /> Saved List
-        </h1>
-
-        <p className="page-about">
-          It's never been so easy to organize all the content you want to learn
-        </p>
-
-        <button className="page-button">Get Started</button>
-      </section>
+      <button className="page-button">GET STARTED</button>
     </main>
   );
 }
