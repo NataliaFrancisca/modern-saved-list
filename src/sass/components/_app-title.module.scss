@@ -1,0 +1,12 @@
+.app-title{
+    font-size: 1.75em;
+    text-align: start;
+    font-weight: 800;
+    font-family: $title-font-family;
+}
+
+@media screen and (min-width: 776px){
+    .app-title{
+        font-size: 3em;
+    }
+}
