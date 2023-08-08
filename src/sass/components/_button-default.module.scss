@@ -1,0 +1,44 @@
+@mixin button{
+    height: 74px;
+
+    color: $black-color;
+    font-size: 1.12em;
+    font-weight: 700;
+
+    min-width: 100%;
+    width: 288px;
+
+    border-radius: 12px;
+    border: 2px solid $black-color;
+    box-shadow: 7px 8px 0px 0px $black-color;
+
+    margin-top: 21px;
+    margin-bottom: 28px;
+
+    cursor: pointer;
+    transition: $transition-ease-in-out;
+
+    &:hover{
+        transition: $transition-ease-in-out;
+        background-color: $black-color;
+        color: white;
+    }
+}
+
+.button-default{
+    @include button;
+    background-color: $secondary-color;
+
+    &:hover{
+        border-color: $secondary-color;
+    }
+}
+
+.button-google{
+    @include button;
+    background-color: $dark-orange-color;
+
+    &:hover{
+        border-color: $dark-orange-color;
+    }
+}
