@@ -1,27 +1,26 @@
 @mixin button{
-    height: 64px;
-
-    color: $black-color;
-    font-size: 1.12em;
-    font-weight: 700;
-
-    min-width: 100%;
-    width: 288px;
-
     border-radius: 12px;
     border: 2px solid $black-color;
     box-shadow: 7px 8px 0px 0px $black-color;
-
+    color: $black-color;
+    cursor: pointer;
+    font-size: 1.12em;
+    font-weight: 700;
+    height: 64px;
     margin-top: 21px;
     margin-bottom: 28px;
-
-    cursor: pointer;
+    min-width: 100%;
     transition: $transition-ease-in-out;
+    width: 288px;
 
     &:hover{
-        transition: $transition-ease-in-out;
         background-color: $black-color;
         color: white;
+        transition: $transition-ease-in-out;
+    }
+
+    @media screen and (min-width: 992px){
+        height: 54px;
     }
 }
 
@@ -42,3 +41,4 @@
         border-color: $dark-orange-color;
     }
 }
+
