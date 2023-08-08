@@ -7,9 +7,9 @@ const Login = () => {
     <section className="base-page">
       <AppTitle />
 
-      <span className="page-legend">LOGIN.</span>
-
       <form className="form-element">
+        <legend className="page-legend">LOGIN.</legend>
+
         <div className="group-label-input">
           <label htmlFor="name-input">NAME:</label>
           <input type="text" id="name-input" />

@@ -7,9 +7,9 @@ const Register = () => {
     <section className="base-page">
       <AppTitle />
 
-      <span className="page-legend">REGISTER.</span>
-
       <form className="form-element">
+        <legend className="page-legend">REGISTER.</legend>
+
         <div className="group-label-input">
           <label htmlFor="name-input">NAME:</label>
           <input type="text" id="name-input" />
