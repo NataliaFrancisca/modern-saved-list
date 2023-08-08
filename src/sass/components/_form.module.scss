@@ -16,11 +16,13 @@
     color: $black-color;
     margin: 10px;
     width: 100%;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
 
     & label{
         font-size: 1.12em;
         font-weight: 700;
-        margin-bottom: 10px;
     }
 
     & input{
@@ -41,13 +43,12 @@
 
 .nav-message-bottom{
     color: $black-color;
-    font-size: 12px;
+    font-size: .9em;
     font-weight: 700;
     text-align: center;
 
     & a{
         color: $blue-color;
-        font-size: 12px;
         font-weight: 900;
         text-decoration-line: underline;
     }
