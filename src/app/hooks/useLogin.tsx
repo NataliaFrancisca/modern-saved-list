@@ -18,10 +18,10 @@ export const useLogin = (inputData: InputFormLogin) => {
     if (resultFromValidation.hasErrors == false) {
       const firebaseLogin = await signIn(email, password);
 
-      if (firebaseLogin.includes('Error')) {
+      if (firebaseLogin.message.includes('Error')) {
         const resultFromValidation = validateLoginForm(
           inputData,
-          firebaseLogin
+          firebaseLogin.message
         );
         setError(resultFromValidation.errors);
       } else {
