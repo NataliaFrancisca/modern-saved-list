@@ -1,13 +1,29 @@
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, setPersistence, browserLocalPersistence} from "firebase/auth";
 import auth from "../config";
 
 const provider = new GoogleAuthProvider();
 
+export const singInPersistence = async() => {
+    return setPersistence(auth, browserLocalPersistence)
+        .then(() => {
+            return 'saved login'
+        })
+        .catch((error) => {
+            return error.message
+        })
+}
+
 export async function signIn(email: string, password: string){
     return signInWithEmailAndPassword(auth, email, password).then((userCredencial) => {
-        return 'login with sucess';
+        singInPersistence();
+        return {
+            message: 'login with sucess',
+            data: userCredencial
+        };
     }).catch((error) => {
-        return error.message;
+        return {
+            message: error.message
+        }
     })
 }
 
@@ -19,3 +35,4 @@ export async function signInWithGoogle(){
         return error;
     })
 }
+

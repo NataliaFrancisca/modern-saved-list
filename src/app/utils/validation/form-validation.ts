@@ -1,8 +1,8 @@
-import { inputFormLogin, inputFormRegister } from "@/app/types/types";
+import { InputFormLogin, InputFormRegister } from "@/app/types/types";
 
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
-export function validateRegisterForm(register: inputFormRegister, firebase?: string){
+export function validateRegisterForm(register: InputFormRegister, firebase?: string){
     const executeValidationName = validateName(register.name);
     const executeValidationEmail = validateEmail(register.email, firebase);
     const executeValidationPassword = validatePassword(register.password, firebase);
@@ -19,7 +19,7 @@ export function validateRegisterForm(register: inputFormRegister, firebase?: str
     return { hasErrors, errors }
 }
 
-export function validateLoginForm(login: inputFormLogin, firebase?:string){
+export function validateLoginForm(login: InputFormLogin, firebase?:string){
   const executeValidationEmail = validateEmail(login.email, firebase);
   const executeValidationPassword = validatePassword(login.password, firebase);
 
