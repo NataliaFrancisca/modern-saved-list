@@ -1,0 +1,27 @@
+.header-dashboard{
+    display: flex;
+    justify-content: center;
+    
+    button{
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    button:first-child{
+        margin-right: 38px;
+    }
+
+    button:last-child{
+        margin-left: 38px;
+    }
+}
+
+.dashboard-user-name{
+    color: $black-color;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 23px;
+    margin-bottom: 58px;
+}

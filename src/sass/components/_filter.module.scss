@@ -1,0 +1,57 @@
+.filter{
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-result{
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 24px 0;
+}
+
+.btn-add-content{
+    width: 136px;
+    height: 102px;
+    border-radius: 4px;
+    border: 2px solid #202020;
+    background: #FFF;
+    cursor: pointer;
+}
+
+.content-book{
+    width: 133px;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 4px;
+    border: 2px solid #202020;
+    background: $secondary-color;
+
+    & img{
+        width: 118px;
+        height: 156px;  
+        object-fit: contain;
+    }
+}
+
+.content-description{
+    display: flex;
+    flex-direction: column;
+
+
+    & h2{
+        color: $black-color;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    
+    & span{
+        color: $grey-color;
+        font-size: 12px;
+        font-weight: 700;
+    }
+}

@@ -7,7 +7,11 @@
 
 @import 'utilities/page.module';
 @import 'utilities/base-page.module';
+@import 'utilities/dashboard-page.module';
+
 
 @import 'components/app-title.module';
 @import 'components/button-default.module';
 @import 'components/form.module';
+@import 'components/dashboard-nav.module';
+@import 'components/filter.module';
