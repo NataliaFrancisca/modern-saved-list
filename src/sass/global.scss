@@ -1,6 +1,7 @@
 @import 'abstracts/colors.module';
 @import 'abstracts/variables.module';
 @import 'abstracts/font-family.module';
+@import 'abstracts/mixin.module';
 
 @import 'base/reset.module';
 @import 'base/base.module';
@@ -15,3 +16,4 @@
 @import 'components/form.module';
 @import 'components/dashboard-nav.module';
 @import 'components/filter.module';
+@import 'components/content.module'
