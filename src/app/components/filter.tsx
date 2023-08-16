@@ -1,28 +1,47 @@
+import Content from './content';
 import DashboardNav from './dashboard-nav';
 import { useSearchParams } from 'next/navigation';
 
 const Filter = () => {
   const router = useSearchParams();
-  const filtro = router.get('filter');
-  console.log(filtro);
+  let filtro = router.get('filter');
+  filtro = filtro == null ? 'allcontent' : filtro;
 
   return (
     <main className="filter">
-      <DashboardNav current={filtro == null ? 'allcontent' : filtro} />
+      <DashboardNav current={filtro} />
 
       <section className="filter-result">
         <button className="btn-add-content">
           <img src="icon/add.svg" alt="add icon" />
         </button>
 
-        <div className="content-book">
-          <img src="images/bell-hooks-book.png" alt="" />
-        </div>
-
-        <div className="content-description">
-          <h2>ALL ABOUT LOVE NEW VISIONS</h2>
-          <span>BOOK</span>
-        </div>
+        <Content data={{ title: 'Pachinko', type: 'BOOK' }} />
+        <Content data={{ title: 'BK AO VIVO', type: 'VIDEO' }} />
+        <Content data={{ title: 'MANO A MANO', type: 'PODCAST' }} />
+        <Content
+          data={{
+            title: 'What Is Candomblé? Beliefs and History',
+            type: 'ARTICLE'
+          }}
+        />
+        <Content data={{ title: 'RECEITA COXINHA FÁCIL', type: 'OTHERS' }} />
+        <Content
+          data={{ title: 'tudo sobre o amor - bell hooks', type: 'BOOK' }}
+        />
+        <Content data={{ title: 'amendoas', type: 'BOOK' }} />
+        <Content data={{ title: 'BK AO VIVO', type: 'VIDEO' }} />
+        <Content data={{ title: 'MANO A MANO', type: 'PODCAST' }} />
+        <Content
+          data={{
+            title: 'What Is Candomblé? Beliefs and History',
+            type: 'ARTICLE'
+          }}
+        />
+        <Content data={{ title: 'RECEITA COXINHA FÁCIL', type: 'OTHERS' }} />
+        <Content data={{ title: 'RECEITA COXINHA FÁCIL', type: 'OTHERS' }} />
+        <Content data={{ title: 'RECEITA COXINHA FÁCIL', type: 'OTHERS' }} />
+        <Content data={{ title: 'BK AO VIVO', type: 'VIDEO' }} />
       </section>
     </main>
   );
