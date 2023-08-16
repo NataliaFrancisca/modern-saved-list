@@ -12,3 +12,10 @@ export type InputError = {
     email: string | boolean;
     password: string | boolean;
 }
+
+export type Content = {
+    image?: string;
+    title: string;
+    type: string;
+};
+  
