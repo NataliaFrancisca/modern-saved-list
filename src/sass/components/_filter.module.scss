@@ -42,3 +42,16 @@
     grid-row: 1 / 4;
 }
 
+@media screen and (min-width: 576px){
+    .filter{
+        width: 60%;
+        align-self: center;
+    }
+    .filter-result{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .filter-result > article, .btn-add-content{
+        grid-row: auto;
+    }
+}
