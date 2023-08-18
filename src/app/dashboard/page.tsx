@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import AppTitle from '../components/app-title';
-import { useCurrentUser } from './useCurrentUser';
+import { useCurrentUser } from '../hooks/useCurrentUser';
 
 import Filter from '../components/filter';
 
