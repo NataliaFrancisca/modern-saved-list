@@ -2,10 +2,10 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { validateLoginForm } from '../utils/validation/form-validation';
 import { signIn, signInWithGoogle } from '../firebase/auth/signin';
-import { InputFormLogin, InputError } from '../types/types';
+import { FormLogin, ErrorFormLogin } from '../types/types';
 
-export const useLogin = (inputData: InputFormLogin) => {
-  const [error, setError] = useState<InputError>();
+export const useLogin = (inputData: FormLogin) => {
+  const [error, setError] = useState<ErrorFormLogin>();
   const { email, password } = inputData;
 
   const router = useRouter();

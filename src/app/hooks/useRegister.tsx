@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { validateRegisterForm } from '../utils/validation/form-validation';
 import { signUp, signUpWithGoogle } from '../firebase/auth/singup';
-import { InputFormRegister, InputError } from '../types/types';
+import { FormRegister, ErrorFormRegister } from '../types/types';
 
-export const useRegister = (inputData: InputFormRegister) => {
-  const [error, setError] = useState<InputError>();
+export const useRegister = (inputData: FormRegister) => {
+  const [error, setError] = useState<ErrorFormRegister>();
   const { name, email, password } = inputData;
 
   const router = useRouter();

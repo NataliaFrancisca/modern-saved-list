@@ -1,6 +1,6 @@
-import { Content } from '../types/types';
+import { FormContent } from '../types/types';
 
-const Content = (props: { data: Content }) => {
+const Content = (props: { data: FormContent }) => {
   const iconPath = `icon/${props.data.type.toLowerCase()}.svg`;
 
   return (
