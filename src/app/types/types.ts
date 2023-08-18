@@ -1,21 +1,34 @@
-export type InputFormLogin = {
+export type FormLogin = {
     email: string;
     password: string;
 }
-export type InputFormRegister = {
+export type FormRegister = {
     name: string;
     email: string;
     password: string;
 }
-export type InputError = {
-    name?: string | boolean;
+
+export type ErrorFormLogin = {
     email: string | boolean;
     password: string | boolean;
 }
 
-export type Content = {
-    image?: string;
+export type ErrorFormRegister = {
+    name: string | boolean;
+    email: string | boolean;
+    password: string | boolean;
+}
+
+export type FormContent = {
     title: string;
+    link: string;
     type: string;
+    image?: string;
 };
-  
+
+export type ErrorFormContent = {
+    title: string | boolean;
+    link: string | boolean;
+    type: string | boolean;
+    image?: string | boolean;
+}
