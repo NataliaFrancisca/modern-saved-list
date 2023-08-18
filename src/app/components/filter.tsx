@@ -1,18 +1,23 @@
 import Content from './content';
 import DashboardNav from './dashboard-nav';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 const Filter = () => {
-  const router = useSearchParams();
-  let filtro = router.get('filter');
+  const routerSearch = useSearchParams();
+  const router = useRouter();
+  let filtro = routerSearch.get('filter');
   filtro = filtro == null ? 'allcontent' : filtro;
+
+  const nav = () => {
+    router.push('/dashboard/save-content');
+  };
 
   return (
     <main className="filter">
       <DashboardNav current={filtro} />
 
       <section className="filter-result">
-        <button className="btn-add-content">
+        <button className="btn-add-content" onClick={() => nav()}>
           <img src="icon/add.svg" alt="add icon" />
         </button>
 
