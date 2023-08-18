@@ -1,4 +1,4 @@
-import { FormLogin, FormRegister, FormContent, InputErrorFormContent } from "@/app/types/types";
+import { FormLogin, FormRegister, FormContent, ErrorFormContent } from "@/app/types/types";
 
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 const urlRegex = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/g;
@@ -40,7 +40,7 @@ export function validateSaveContent(content: FormContent){
   const executeValidationURL = validateURL(content.link);
   const executeValidateType = validateType(content.type);
 
-  let errors: InputErrorFormContent = {
+  let errors: ErrorFormContent = {
     title: executeValidationTitle,
     link: executeValidationURL,
     type: executeValidateType,
