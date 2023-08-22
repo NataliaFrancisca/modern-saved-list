@@ -1,5 +1,5 @@
-import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
-import auth from "../config";
+import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, getAuth} from "firebase/auth";
+import { auth } from '../config';
 
 const provider = new GoogleAuthProvider();
 

@@ -1,6 +1,5 @@
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, setPersistence, browserLocalPersistence} from "firebase/auth";
-import auth from "../config";
-
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, setPersistence, browserLocalPersistence, getAuth} from "firebase/auth";
+import { auth } from '../config';
 const provider = new GoogleAuthProvider();
 
 export const singInPersistence = async() => {
