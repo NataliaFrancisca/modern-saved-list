@@ -1,12 +1,15 @@
+import { useGetContent } from '../hooks/useGetContent';
+import { FormContent } from '../types/types';
 import Content from './content';
 import DashboardNav from './dashboard-nav';
 import { useSearchParams, useRouter } from 'next/navigation';
 
 const Filter = () => {
   const routerSearch = useSearchParams();
+  let currentFilter = routerSearch.get('filter') || 'allcontent';
+
   const router = useRouter();
-  let filtro = routerSearch.get('filter');
-  filtro = filtro == null ? 'allcontent' : filtro;
+  const data = useGetContent(currentFilter);
 
   const nav = () => {
     router.push('/dashboard/save-content');
@@ -14,20 +17,16 @@ const Filter = () => {
 
   return (
     <main className="filter">
-      <DashboardNav current={filtro} />
+      <DashboardNav />
 
       <section className="filter-result">
         <button className="btn-add-content" onClick={() => nav()}>
           <img src="icon/add.svg" alt="add icon" />
         </button>
 
-        <Content
-          data={{
-            title: 'Pachinko',
-            link: 'https://www.amazon.com.br/Pachinko-Min-Jin-Lee/dp/8551006347',
-            type: 'BOOK'
-          }}
-        />
+        {data.map((content, index) => (
+          <Content data={content} key={index} />
+        ))}
       </section>
     </main>
   );

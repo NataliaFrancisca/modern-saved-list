@@ -54,6 +54,7 @@ const SaveContent = () => {
           <datalist id="options">
             <option value="ARTICLE" />
             <option value="BOOK" />
+            <option value="MUSIC" />
             <option value="PODCAST" />
             <option value="VIDEO" />
             <option value="OTHERS" />
