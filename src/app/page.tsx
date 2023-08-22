@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation';
 import AppTitle from './components/app-title';
 import { onAuthStateChanged } from 'firebase/auth';
-import auth from './firebase/config';
+import { auth } from './firebase/config';
 
 export default function Home() {
   const router = useRouter();
