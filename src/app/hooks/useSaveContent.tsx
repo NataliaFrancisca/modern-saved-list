@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { validateSaveContent } from '@/app/utils/validation/form-validation';
 import { FormContent, ErrorFormContent } from '@/app/types/types';
+import { save } from '../firebase/database/save';
 
 export const useSave = (formData: FormContent) => {
   const [error, setError] = useState<ErrorFormContent>();
@@ -14,7 +15,9 @@ export const useSave = (formData: FormContent) => {
     setError(resultFromValidation.errors);
 
     if (resultFromValidation.hasErrors == false) {
-      console.log('EBAAAA :)');
+      const result = await save(formData);
+      router.push('/dashboard');
+      console.log(result);
     }
   };
 
