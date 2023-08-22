@@ -13,6 +13,10 @@
     gap: 20px;
 }
 
+.content-MUSIC{
+    grid-row: span 6;
+}
+
 .content-BOOK{
     grid-row: span 5;
 }
@@ -32,6 +36,8 @@
 .content-OTHERS{
     grid-row: span 1;
 }
+
+
 
 .btn-add-content{
     width: 100%;
