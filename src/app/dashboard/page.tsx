@@ -2,11 +2,12 @@
 import { useState } from 'react';
 import AppTitle from '../components/app-title';
 import { useCurrentUser } from '../hooks/useCurrentUser';
-
 import Filter from '../components/filter';
+import { useGetContent } from '../hooks/useGetContent';
 
 const Dashboard = () => {
-  const data = useCurrentUser();
+  const userData = useCurrentUser();
+
   const [toggleInput, setToogleInput] = useState(true);
   const [searchText, setSearchText] = useState('');
 
@@ -39,7 +40,7 @@ const Dashboard = () => {
       </header>
 
       <h1 className={`dashboard-user-name inputHidden-${toggleInput}`}>
-        OLÁ, {data?.displayName}!
+        OLÁ, {userData?.displayName}!
       </h1>
 
       <form
