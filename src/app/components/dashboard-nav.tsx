@@ -1,9 +1,12 @@
 import Link from 'next/link';
+import { useSearchParams, useRouter } from 'next/navigation';
 
-const DashboardNav = (props: { current: string | null }) => {
-  const currentNav = (link: string): string => {
-    return props.current === link ? 'current' : 'default';
-  };
+const DashboardNav = () => {
+  const routerSearch = useSearchParams();
+  let filtro = routerSearch.get('filter') || 'allcontent';
+
+  const applyClassName = (link: string) =>
+    filtro === link ? 'current' : 'dafult';
 
   return (
     <nav className="dashboard-nav">
@@ -13,7 +16,7 @@ const DashboardNav = (props: { current: string | null }) => {
             pathname: '/dashboard',
             query: { filter: 'allcontent' }
           }}
-          className={currentNav('allcontent')}
+          className={applyClassName('allcontent')}
         >
           ALL CONTENT
         </Link>
@@ -23,7 +26,7 @@ const DashboardNav = (props: { current: string | null }) => {
             pathname: '/dashboard',
             query: { filter: 'article' }
           }}
-          className={currentNav('article')}
+          className={applyClassName('article')}
         >
           ARTICLE
         </Link>
@@ -31,9 +34,19 @@ const DashboardNav = (props: { current: string | null }) => {
         <Link
           href={{
             pathname: '/dashboard',
+            query: { filter: 'music' }
+          }}
+          className={applyClassName('music')}
+        >
+          MUSIC
+        </Link>
+
+        <Link
+          href={{
+            pathname: '/dashboard',
             query: { filter: 'podcast' }
           }}
-          className={currentNav('podcast')}
+          className={applyClassName('podcast')}
         >
           PODCAST
         </Link>
@@ -41,11 +54,11 @@ const DashboardNav = (props: { current: string | null }) => {
         <Link
           href={{
             pathname: '/dashboard',
-            query: { filter: 'videos' }
+            query: { filter: 'video' }
           }}
-          className={currentNav('videos')}
+          className={applyClassName('video')}
         >
-          VIDEOS
+          VIDEO
         </Link>
 
         <Link
@@ -53,7 +66,7 @@ const DashboardNav = (props: { current: string | null }) => {
             pathname: '/dashboard',
             query: { filter: 'book' }
           }}
-          className={currentNav('book')}
+          className={applyClassName('book')}
         >
           BOOK
         </Link>
@@ -63,7 +76,7 @@ const DashboardNav = (props: { current: string | null }) => {
             pathname: '/dashboard',
             query: { filter: 'others' }
           }}
-          className={currentNav('others')}
+          className={applyClassName('others')}
         >
           OTHERS
         </Link>
