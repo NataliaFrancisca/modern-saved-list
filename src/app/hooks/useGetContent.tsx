@@ -19,10 +19,8 @@ export const useGetContent = (filter: string) => {
   }, []);
 
   useEffect(() => {
-    console.log('OH SHIT WITH FILTER');
     const fetchData = async () => {
       const result = await filterData(baseData, filter);
-      console.log(result);
       setData(result);
     };
 
