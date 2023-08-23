@@ -1,35 +1,50 @@
-import { useGetContent } from '../hooks/useGetContent';
-import { FormContent } from '../types/types';
-import Content from './content';
+import { useEffect, useState } from 'react';
+import Loader from './loader';
 import DashboardNav from './dashboard-nav';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useGetContent } from '../hooks/useGetContent';
+import Content from './content';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
-const Filter = () => {
-  const routerSearch = useSearchParams();
-  let currentFilter = routerSearch.get('filter') || 'allcontent';
-
+const Filter = React.memo(() => {
+  const [loading, setLoading] = useState(true);
+  const userContent = useGetContent();
   const router = useRouter();
-  const data = useGetContent(currentFilter);
 
-  const nav = () => {
-    router.push('/dashboard/save-content');
-  };
+  useEffect(() => {
+    userContent ? setLoading(false) : setLoading(true);
+  }, []);
+  // const [loading, setLoading] = useState(true);
+  // const routerSearch = useSearchParams();
+  // let currentFilter = routerSearch.get('filter') || 'allcontent';
+
+  // const router = useRouter();
+  // const data = useGetContent(currentFilter);
 
   return (
     <main className="filter">
-      <DashboardNav />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <DashboardNav />
+          <section className="filter-result">
+            <button className="btn-add-content">
+              <img
+                src="icon/add.svg"
+                alt="add icon"
+                onClick={() => router.push('/dashboard/save-content')}
+              />
+            </button>
 
-      <section className="filter-result">
-        <button className="btn-add-content" onClick={() => nav()}>
-          <img src="icon/add.svg" alt="add icon" />
-        </button>
-
-        {data.map((content, index) => (
-          <Content data={content} key={index} />
-        ))}
-      </section>
+            {userContent.map((content, index) => (
+              <Content data={content} key={index} />
+            ))}
+          </section>
+        </>
+      )}
     </main>
   );
-};
+});
 
 export default Filter;
