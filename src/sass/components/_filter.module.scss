@@ -11,31 +11,34 @@
 	grid-auto-rows: auto;
     margin: 24px 0;
     gap: 20px;
+
+    // grid-gap: 10px;
+    // grid-auto-rows: minmax(50px, auto);
 }
 
-.content-MUSIC{
-    grid-row: span 6;
-}
+// .content-MUSIC{
+//     grid-row: span 6;
+// }
 
-.content-BOOK{
-    grid-row: span 5;
-}
+// .content-BOOK{
+//     grid-row: span 5;
+// }
 
-.content-VIDEO{
-    grid-row: span 4;
-}
+// .content-VIDEO{
+//     grid-row: span 4;
+// }
 
-.content-PODCAST{
-    grid-row: span 3;
-}
+// .content-PODCAST{
+//     grid-row: span 3;
+// }
 
-.content-ARTICLE{
-    grid-row: span 2;
-}
+// .content-ARTICLE{
+//     grid-row: span 2;
+// }
 
-.content-OTHERS{
-    grid-row: span 1;
-}
+// .content-OTHERS{
+//     grid-row: span 1;
+// }
 
 
 
@@ -45,7 +48,6 @@
     @include contentBorder;
     background: transparent;
     cursor: pointer;
-    grid-row: 1 / 4;
 }
 
 @media screen and (min-width: 576px){
