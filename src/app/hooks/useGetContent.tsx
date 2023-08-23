@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getResource } from '../firebase/database/resource';
 import { FormContent } from '../types/types';
+import { useSearchParams } from 'next/navigation';
 
-export const useGetContent = (filter: string) => {
+export const useGetContent = () => {
+  const routerSearch = useSearchParams();
+  let filter = routerSearch.get('filter') || 'allcontent';
+
   const [baseData, setBaseData] = useState([]);
   const [data, setData] = useState([]);
 
