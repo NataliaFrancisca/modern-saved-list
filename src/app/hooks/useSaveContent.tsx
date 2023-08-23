@@ -16,7 +16,7 @@ export const useSave = (formData: FormContent) => {
 
     if (resultFromValidation.hasErrors == false) {
       const result = await save(formData);
-      router.push('/dashboard');
+      router.back();
       console.log(result);
     }
   };
