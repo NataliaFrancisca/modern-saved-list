@@ -29,12 +29,11 @@ const Filter = React.memo(() => {
         <>
           <DashboardNav />
           <section className="filter-result">
-            <button className="btn-add-content">
-              <img
-                src="icon/add.svg"
-                alt="add icon"
-                onClick={() => router.push('/dashboard/save-content')}
-              />
+            <button
+              className="btn-add-content"
+              onClick={() => router.push('/dashboard/save-content')}
+            >
+              <img src="icon/add.svg" alt="add icon" />
             </button>
 
             {userContent.map((content, index) => (
