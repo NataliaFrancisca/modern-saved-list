@@ -1,24 +1,15 @@
-import { auth, db } from "../config";
+import { db } from "../config";
 import { getDoc, doc } from "firebase/firestore";
+import { getUserSession } from "@/app/utils/local-storage/save-user";
 
-const getUserData = async() => {
-    const user = auth.currentUser;
+export const getResource = async() => {
+    const user = getUserSession();
+    const docRef = doc(db, 'users', user.uid);
 
-    if(user){
-        const docRef = doc(db, "users", user.uid);
-        return getDoc(docRef).then((result) => {
-            console.log("Sucess getting data");
-            return result.data();
-        }).catch((error) => {
-            return error;
-        })
-    }
-}
-
-export async function getResource(){
-    return getUserData().then((result) => {
-        return result;
+    return await getDoc(docRef).then((result) => {
+        return result.data();
     }).catch((error) => {
         return error;
     })
-}
+};
+
