@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { validateLoginForm } from '../utils/validation/form-validation';
 import { signIn, signInWithGoogle } from '../firebase/auth/signin';
 import { FormLogin, ErrorFormLogin } from '../types/types';
+import { saveUserSession } from '../utils/local-storage/save-user';
 
 export const useLogin = (inputData: FormLogin) => {
   const [error, setError] = useState<ErrorFormLogin>();
