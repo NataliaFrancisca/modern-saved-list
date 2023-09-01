@@ -1,46 +1,50 @@
 import { useEffect, useState } from 'react';
-import { getResource } from '../firebase/database/resource';
 import { FormContent } from '../types/types';
-import { useSearchParams } from 'next/navigation';
+import { getResource } from '../firebase/database/resource';
+import {
+  getContentSession,
+  saveContentSession
+} from '../utils/local-storage/save-content';
 
-export const useGetContent = () => {
-  const routerSearch = useSearchParams();
-  let filter = routerSearch.get('filter') || 'allcontent';
+import { filterUsingTypes, filterUsingSearch } from '../utils/filter/filter';
 
-  const [baseData, setBaseData] = useState([]);
-  const [data, setData] = useState([]);
+export const useGetContent = (searchData: string, filter: string) => {
+  const [content, setContent] = useState<Array<FormContent>>();
+  const [firstFetchSearch, setFirstFetchSearch] = useState(true);
+  const [firstFetchType, setFirstFetchType] = useState(true);
+
+  const baseData = getContentSession();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchContent = async () => {
       const result = await getResource();
-      if (result) {
-        setData(result.content);
-        setBaseData(result.content);
-      }
+      saveContentSession(result.content);
+      const data = filterUsingTypes(result.content, filter);
+      setContent(data);
     };
 
-    fetchData();
+    fetchContent();
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await filterData(baseData, filter);
-      setData(result);
-    };
+    if (firstFetchSearch) {
+      setFirstFetchSearch(false);
+      return;
+    }
 
-    fetchData();
-    return () => {};
+    const result = filterUsingSearch(baseData, searchData);
+    setContent(result);
+  }, [searchData]);
+
+  useEffect(() => {
+    if (firstFetchType) {
+      setFirstFetchType(false);
+      return;
+    }
+
+    const result = filterUsingTypes(baseData, filter);
+    setContent(result);
   }, [filter]);
 
-  return data;
+  return content;
 };
-
-function filterData(data: any, filter: String) {
-  filter = filter.toUpperCase();
-
-  if (filter == 'ALLCONTENT') {
-    return data;
-  }
-
-  return data.filter((content: FormContent) => content.type === filter);
-}
