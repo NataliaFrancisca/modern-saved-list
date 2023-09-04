@@ -1,12 +1,22 @@
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-const DashboardNav = () => {
+const DashboardNav = (props: {
+  onCloseInput: Function;
+  statusInput: boolean;
+}) => {
   const routerSearch = useSearchParams();
   let filtro = routerSearch.get('filter') || 'allcontent';
 
   const applyClassName = (link: string) =>
     filtro === link ? 'current' : 'dafult';
+
+  useEffect(() => {
+    if (props.statusInput === false) {
+      props.onCloseInput(true);
+    }
+  }, [filtro]);
 
   return (
     <nav className="dashboard-nav">
