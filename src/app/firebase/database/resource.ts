@@ -1,6 +1,6 @@
 import { db } from "../config";
 import { getDoc, doc } from "firebase/firestore";
-import { getUserSession } from "@/app/utils/local-storage/save.user";
+import { getUserSession } from "@/app/utils/local-storage/save-user";
 
 export const getResource = async() => {
     const user = getUserSession();
