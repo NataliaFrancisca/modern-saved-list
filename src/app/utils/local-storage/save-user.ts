@@ -1,11 +1,8 @@
-type User = {
-    displayName: string | null;
-    email: string | null;
-    uid: string;
-}
+import { User } from "@/app/types/types";
 
 function saveUserSession(user: User){
-    sessionStorage.setItem('user-session', JSON.stringify(user));
+    const {displayName, email, uid} = user;
+    sessionStorage.setItem('user-session', JSON.stringify({displayName, email, uid}));
 }
 
 function getUserSession(){
