@@ -32,3 +32,9 @@ export type ErrorFormContent = {
     type: string | boolean;
     image?: string | boolean;
 }
+
+export type User = {
+    displayName: string;
+    email: string;
+    uid: string;
+};
