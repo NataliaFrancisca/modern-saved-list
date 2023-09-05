@@ -8,7 +8,7 @@ const SaveContent = () => {
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
   const [type, setType] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState<string>();
 
   const { error, saveContent } = useSave({ title, link, type, image });
 
