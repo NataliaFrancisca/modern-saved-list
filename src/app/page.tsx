@@ -3,7 +3,9 @@ import { useRouter } from 'next/navigation';
 import AppTitle from './components/app-title';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/config';
-import { saveUserSession } from './utils/local-storage/save.user';
+import { useEffect } from 'react';
+import { saveUserSession } from './utils/local-storage/save-user';
+import { User } from './types/types';
 
 export default function Home() {
   const router = useRouter();
@@ -12,14 +14,12 @@ export default function Home() {
     router.push('/register');
   };
 
-  onAuthStateChanged(auth, (currentUser) => {
-    if (currentUser) {
-      const { displayName, email, uid } = currentUser;
-      saveUserSession({ displayName, email, uid });
-    }
-
-    currentUser && router.push('/dashboard');
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth, (userCredential) => {
+      saveUserSession(userCredential as User);
+      router.push('/dashboard');
+    });
+  }, []);
 
   return (
     <main className="page">
