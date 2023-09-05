@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation'; // Importe seu contexto de autenticação
-import { getUserSession } from '../utils/local-storage/save.user';
+import { getUserSession } from '../utils/local-storage/save-user';
 
 interface PrivateRouteProps {
   children: React.ReactNode;
