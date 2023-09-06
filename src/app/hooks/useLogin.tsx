@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { validateLoginForm } from '../utils/validation/form-validation';
 import { signIn, signInWithGoogle } from '../firebase/auth/signin';
 import { FormLogin, ErrorFormLogin } from '../types/types';
+import { setUserCookie } from '../utils/local-storage/save-user';
 
 export const useLogin = (inputData: FormLogin) => {
   const [error, setError] = useState<ErrorFormLogin>();
@@ -25,6 +26,7 @@ export const useLogin = (inputData: FormLogin) => {
         );
         setError(resultFromValidation.errors);
       } else {
+        setUserCookie(firebaseLogin.data);
         router.push('/dashboard');
       }
     }

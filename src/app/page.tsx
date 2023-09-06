@@ -4,7 +4,7 @@ import AppTitle from './components/app-title';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/config';
 import { useEffect } from 'react';
-import { saveUserSession } from './utils/local-storage/save-user';
+import { getUserCookie, setUserCookie } from './utils/local-storage/save-user';
 import { User } from './types/types';
 
 export default function Home() {
@@ -15,10 +15,11 @@ export default function Home() {
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (userCredential) => {
-      saveUserSession(userCredential as User);
+    const userCookie = getUserCookie();
+    console.log("I'M beign called at page");
+    if (userCookie) {
       router.push('/dashboard');
-    });
+    }
   }, []);
 
   return (
