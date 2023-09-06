@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FormContent } from '../types/types';
 import { getResource } from '../firebase/database/resource';
-import {
-  getContentSession,
-  saveContentSession
-} from '../utils/local-storage/save-content';
 
 import { filterUsingTypes, filterUsingSearch } from '../utils/filter/filter';
 
@@ -13,14 +9,14 @@ export const useGetContent = (searchData: string, filter: string) => {
   const [firstFetchSearch, setFirstFetchSearch] = useState(true);
   const [firstFetchType, setFirstFetchType] = useState(true);
 
-  const baseData = getContentSession();
+  const [baseData, setBaseData] = useState([]);
 
   useEffect(() => {
     const fetchContent = async () => {
       const result = await getResource();
-      saveContentSession(result.content);
       const data = filterUsingTypes(result.content, filter);
       setContent(data);
+      setBaseData(result.content);
     };
 
     fetchContent();
