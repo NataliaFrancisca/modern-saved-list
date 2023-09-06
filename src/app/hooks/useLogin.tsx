@@ -19,25 +19,41 @@ export const useLogin = (inputData: FormLogin) => {
     if (resultFromValidation.hasErrors == false) {
       const firebaseLogin = await signIn(email, password);
 
-      if (!firebaseLogin) {
-        const resultFromValidation = validateLoginForm(
-          inputData,
-          firebaseLogin.message
-        );
-        setError(resultFromValidation.errors);
+      if (firebaseLogin.data) {
+        setUserCookie(firebaseLogin.data);
+        router.push('/dashboard');
         return;
       }
 
-      setUserCookie(firebaseLogin);
-      router.push('/dashboard');
+      if (firebaseLogin.message.includes('Error')) {
+        const firebaseValidation = validateLoginForm(
+          inputData,
+          firebaseLogin.message
+        );
+        setError(firebaseValidation.errors);
+        return;
+      }
     }
   };
 
   const submitWithGoogle = async () => {
     event?.preventDefault();
-    const result = await signInWithGoogle();
-    if (result) {
+    const firebaseLogin = await signInWithGoogle();
+    console.log('firebaseLogin', firebaseLogin);
+
+    if (firebaseLogin.data) {
+      setUserCookie(firebaseLogin.data);
       router.push('/dashboard');
+      return;
+    }
+
+    if (firebaseLogin.message.includes('Error')) {
+      setError({
+        email: false,
+        password: false,
+        google: 'Something wrong with Google Login, try again'
+      });
+      return;
     }
   };
 
