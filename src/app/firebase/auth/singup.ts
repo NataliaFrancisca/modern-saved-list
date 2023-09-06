@@ -3,12 +3,16 @@ import { auth } from '../config';
 
 const provider = new GoogleAuthProvider();
 
-export async function signUp(name: string, email: string, password: string){
+export async function signUp(displayName: string, email: string, password: string){
     return createUserWithEmailAndPassword(auth, email, password).then((userCredencial) => {
         updateProfile(userCredencial.user, {
-            displayName: name
+            displayName: displayName
         })
-        return 'account created with sucess'
+
+        return {
+            message: 'account created with sucess',
+            data: userCredencial
+        }
     }).catch((error) => {
         return error.message;
     })

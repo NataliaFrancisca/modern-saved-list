@@ -4,6 +4,7 @@ import { validateRegisterForm } from '../utils/validation/form-validation';
 import { signUp, signUpWithGoogle } from '../firebase/auth/singup';
 import { FormRegister, ErrorFormRegister } from '../types/types';
 import { initializeDB } from '../firebase/database/initialize-db';
+import { setUserCookie } from '../utils/local-storage/save-user';
 
 export const useRegister = (inputData: FormRegister) => {
   const [error, setError] = useState<ErrorFormRegister>();
@@ -28,6 +29,7 @@ export const useRegister = (inputData: FormRegister) => {
         setError(resultFromValidation.errors);
       } else {
         await initializeDB();
+        setUserCookie(firebaseRegister.data);
         router.push('/dashboard');
       }
     }

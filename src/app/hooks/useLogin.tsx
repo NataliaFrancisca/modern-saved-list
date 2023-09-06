@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { validateLoginForm } from '../utils/validation/form-validation';
 import { signIn, signInWithGoogle } from '../firebase/auth/signin';
 import { FormLogin, ErrorFormLogin } from '../types/types';
+import { setUserCookie } from '../utils/local-storage/save-user';
 
 export const useLogin = (inputData: FormLogin) => {
   const [error, setError] = useState<ErrorFormLogin>();
@@ -18,15 +19,17 @@ export const useLogin = (inputData: FormLogin) => {
     if (resultFromValidation.hasErrors == false) {
       const firebaseLogin = await signIn(email, password);
 
-      if (firebaseLogin.message.includes('Error')) {
+      if (firebaseLogin.includes('Error')) {
         const resultFromValidation = validateLoginForm(
           inputData,
           firebaseLogin.message
         );
         setError(resultFromValidation.errors);
-      } else {
-        router.push('/dashboard');
+        return;
       }
+
+      setUserCookie(firebaseLogin);
+      router.push('/dashboard');
     }
   };
 
