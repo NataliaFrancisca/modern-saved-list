@@ -21,6 +21,11 @@ const Login = () => {
       <form className="form-element" onSubmit={() => submitWithEmailPassword()}>
         <legend className="page-legend">LOGIN.</legend>
 
+        {error?.google && (
+          <span className="error-login_google">
+            PROBLEM DOING LOGIN WITH GOOGLE, <br /> TRY AGAIN
+          </span>
+        )}
         <div className="group-label-input">
           <label htmlFor="email-input">E-MAIL:</label>
           <input
