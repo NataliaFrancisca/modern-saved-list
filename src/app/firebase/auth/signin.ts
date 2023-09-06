@@ -15,14 +15,9 @@ export const singInPersistence = async() => {
 export async function signIn(email: string, password: string){
     return signInWithEmailAndPassword(auth, email, password).then((userCredencial) => {
         singInPersistence();
-        return {
-            message: 'login with sucess',
-            data: userCredencial
-        };
+        return userCredencial;
     }).catch((error) => {
-        return {
-            message: error.message
-        }
+        return  error.message
     })
 }
 

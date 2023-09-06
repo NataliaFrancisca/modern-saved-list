@@ -19,16 +19,17 @@ export const useLogin = (inputData: FormLogin) => {
     if (resultFromValidation.hasErrors == false) {
       const firebaseLogin = await signIn(email, password);
 
-      if (firebaseLogin.message.includes('Error')) {
+      if (firebaseLogin.includes('Error')) {
         const resultFromValidation = validateLoginForm(
           inputData,
           firebaseLogin.message
         );
         setError(resultFromValidation.errors);
-      } else {
-        setUserCookie(firebaseLogin.data);
-        router.push('/dashboard');
+        return;
       }
+
+      setUserCookie(firebaseLogin);
+      router.push('/dashboard');
     }
   };
 
