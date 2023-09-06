@@ -11,6 +11,7 @@ export type FormRegister = {
 export type ErrorFormLogin = {
     email: string | boolean;
     password: string | boolean;
+    google?: string | boolean
 }
 
 export type ErrorFormRegister = {
