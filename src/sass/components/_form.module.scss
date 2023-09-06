@@ -56,6 +56,19 @@
     }
 }
 
+.error-login_google{
+    font-size: 1em;
+    font-weight: bold;
+    color: $black-color;
+    margin: 10px 0;
+    font-style: italic;
+
+    background-color: $dark-orange-color;
+    padding: 10px;
+    border-radius: 4px;
+    border: solid $black-color 2px;
+}
+
 @media screen and (min-width: 576px){
     .form-element{
         align-self: center;
