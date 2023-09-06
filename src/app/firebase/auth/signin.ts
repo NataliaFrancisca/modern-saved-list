@@ -1,31 +1,42 @@
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, setPersistence, browserLocalPersistence, getAuth} from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, setPersistence, browserLocalPersistence, getAuth, UserCredential, AuthError} from "firebase/auth";
 import { auth } from '../config';
 const provider = new GoogleAuthProvider();
 
-export const singInPersistence = async() => {
-    return setPersistence(auth, browserLocalPersistence)
-        .then(() => {
-            return 'saved login'
-        })
-        .catch((error) => {
-            return false
-        })
+export async function singInPersistence(){
+    try{
+        await setPersistence(auth, browserLocalPersistence);
+        return 'set persistence sucess';
+    }catch(error: any){
+        return error.message;
+    }
 }
 
 export async function signIn(email: string, password: string){
-    return signInWithEmailAndPassword(auth, email, password).then((userCredencial) => {
+    try{
+        const response = await signInWithEmailAndPassword(auth, email, password); 
         singInPersistence();
-        return userCredencial;
-    }).catch((error) => {
-        return  error.message
-    })
+        return{
+            message: 'login with sucess',
+            data: response
+        }
+    }catch(error: any){
+        return {
+            message: error.message
+        }
+    }
 }
 
 export async function signInWithGoogle(){
-    return signInWithPopup(auth, provider).then((userCredencial) => {
-        return 'account created with sucess'
-    }).catch((error) => {
-        return error;
-    })
+    try{
+        const response = await signInWithPopup(auth, provider);
+        singInPersistence();
+        return{
+            message: 'login with sucess',
+            data: response
+        }
+    }catch(error: any){
+        return {
+            message: error.message}
+    }
 }
 
