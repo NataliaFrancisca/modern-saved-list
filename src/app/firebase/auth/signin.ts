@@ -8,7 +8,7 @@ export const singInPersistence = async() => {
             return 'saved login'
         })
         .catch((error) => {
-            return error.message
+            return false
         })
 }
 

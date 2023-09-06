@@ -19,7 +19,7 @@ export const useLogin = (inputData: FormLogin) => {
     if (resultFromValidation.hasErrors == false) {
       const firebaseLogin = await signIn(email, password);
 
-      if (firebaseLogin.includes('Error')) {
+      if (!firebaseLogin) {
         const resultFromValidation = validateLoginForm(
           inputData,
           firebaseLogin.message
