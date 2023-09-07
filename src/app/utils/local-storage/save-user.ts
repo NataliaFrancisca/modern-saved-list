@@ -23,7 +23,6 @@ function getUserCookie(){
 
     if (USER_DATA) {
         const result = JSON.parse(USER_DATA);
-        console.log(result);
         return result;
     } else {
         console.log('Cookie not found.');
