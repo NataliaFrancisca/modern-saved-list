@@ -23,6 +23,12 @@ const Register = () => {
       <form className="form-element" onSubmit={() => submitWithEmailPassword()}>
         <legend className="page-legend">REGISTER.</legend>
 
+        {error?.google && (
+          <span className="error-login_google">
+            PROBLEM DOING REGISTER WITH GOOGLE, <br /> TRY AGAIN
+          </span>
+        )}
+
         <div className="group-label-input">
           <label htmlFor="name-input">NAME:</label>
           <input
