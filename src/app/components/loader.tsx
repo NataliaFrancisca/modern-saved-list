@@ -1,5 +1,5 @@
-const Loader = () => {
-  return <span className="loader"></span>;
+const Loader = (props: { color: string }) => {
+  return <span className={`loader loader_${props.color}`}></span>;
 };
 
 export default Loader;

@@ -2,6 +2,8 @@ body{
     background-color: $primary-color;
     font-family: $page-font-family;
     display: flex;
+    min-height: 100vh;
+    height: auto;
 }
 
 h1, h2, h3, h4, h5, h6, p, label, span, input, legend, button{

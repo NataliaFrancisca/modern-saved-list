@@ -24,9 +24,9 @@ const Filter = React.memo((props: { searchData: string }) => {
   }, [userContent]);
 
   return (
-    <main className="filter">
+    <div className="filter">
       {loading ? (
-        <Loader />
+        <Loader color="PURPLE" />
       ) : (
         <>
           {userContent && userContent.length == 0 ? (
@@ -58,7 +58,7 @@ const Filter = React.memo((props: { searchData: string }) => {
           )}
         </>
       )}
-    </main>
+    </div>
   );
 });
 

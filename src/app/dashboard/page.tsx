@@ -6,53 +6,59 @@ import InputSearch from '../components/input-search';
 import { getUserCookie } from '../utils/local-storage/save-user';
 import PrivateRoute from './private-route';
 import DashboardNav from '../components/dashboard-nav';
+import Loader from '../components/loader';
 
 const Dashboard = () => {
   const userInformation = getUserCookie();
 
   const [toggleInput, setToggleInput] = useState(true);
   const [searchData, setSearchData] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (userInformation) {
+      setLoading(!loading);
+    }
+  }, []);
 
   const onToggleInputSearch = () => setToggleInput(!toggleInput);
 
   return (
     <PrivateRoute>
-      <main className="base-page">
-        <AppTitle />
-        <header className="header-dashboard">
-          <button>
-            <img
-              src="icon/search.svg"
-              alt="search icon"
-              onClick={() => onToggleInputSearch()}
-            />
-          </button>
-
-          <img src="user-image/user-option-one.svg" alt="user illustration" />
-
-          <button>
-            <img src="icon/menu.svg" alt="menu icon" />
-          </button>
-        </header>
-
-        <h1 className={`dashboard-user-name inputHidden-${toggleInput}`}>
-          OLÁ, {userInformation?.displayName}!
-        </h1>
-
-        {!toggleInput && (
-          <InputSearch
-            onUpdateSearchData={setSearchData}
-            closeInput={setToggleInput}
+      <AppTitle />
+      <header className="header-dashboard">
+        <button>
+          <img
+            src="icon/search.svg"
+            alt="search icon"
+            onClick={() => onToggleInputSearch()}
           />
-        )}
+        </button>
 
-        <DashboardNav
-          onCloseInput={onToggleInputSearch}
-          statusInput={toggleInput}
+        <img src="user-image/user-option-one.svg" alt="user illustration" />
+
+        <button>
+          <img src="icon/menu.svg" alt="menu icon" />
+        </button>
+      </header>
+
+      <h1 className={`dashboard-user-name inputHidden-${toggleInput}`}>
+        OLÁ, {userInformation.displayName}!
+      </h1>
+
+      {!toggleInput && (
+        <InputSearch
+          onUpdateSearchData={setSearchData}
+          closeInput={setToggleInput}
         />
+      )}
 
-        <Filter searchData={searchData} />
-      </main>
+      <DashboardNav
+        onCloseInput={onToggleInputSearch}
+        statusInput={toggleInput}
+      />
+
+      <Filter searchData={searchData} />
     </PrivateRoute>
   );
 };
