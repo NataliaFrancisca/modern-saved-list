@@ -19,27 +19,47 @@ export const useRegister = (inputData: FormRegister) => {
     setError(resultFromValidation.errors);
 
     if (resultFromValidation.hasErrors == false) {
-      const firebaseRegister = await signUp(name, email, password);
+      const firebaseRegister = await signUp({
+        displayName: name,
+        email,
+        password
+      });
 
-      if (firebaseRegister.includes('Error')) {
-        const resultFromValidation = validateRegisterForm(
-          inputData,
-          firebaseRegister
-        );
-        setError(resultFromValidation.errors);
-      } else {
+      if (firebaseRegister.data) {
         await initializeDB();
         setUserCookie(firebaseRegister.data);
         router.push('/dashboard');
+      }
+
+      if (firebaseRegister.message.includes('Error')) {
+        const firebaseValidation = validateRegisterForm(
+          inputData,
+          firebaseRegister.message
+        );
+        setError(firebaseValidation.errors);
+        return;
       }
     }
   };
 
   const submitWithGoogle = async () => {
     event?.preventDefault();
-    const result = await signUpWithGoogle();
-    await initializeDB();
-    console.log(result);
+    const firebaseRegister = await signUpWithGoogle();
+
+    if (firebaseRegister.data) {
+      await initializeDB();
+      setUserCookie(firebaseRegister.data);
+      router.push('/dashboard');
+    }
+
+    if (firebaseRegister.message.includes('Error')) {
+      setError({
+        name: false,
+        email: false,
+        password: false,
+        google: 'Something wrong with Google Register, try again'
+      });
+    }
   };
 
   return { error, submitWithEmailPassword, submitWithGoogle };
