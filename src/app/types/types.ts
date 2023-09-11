@@ -38,5 +38,6 @@ export type ErrorFormContent = {
 export type User = {
     displayName: string;
     email: string;
+    photo: string;
     uid: string;
 };
