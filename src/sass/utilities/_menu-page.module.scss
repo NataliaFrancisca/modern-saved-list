@@ -1,0 +1,31 @@
+.menu-options{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 69px 0;
+
+    & a{
+        text-decoration: none;
+        color: $black-color;
+        font-weight: bold;
+        transition: $transition-ease-in-out;
+
+        &:nth-child(4){
+            color: $red-color;
+        }
+
+        &:hover{
+            color: $primary-color;
+            font-weight: 800;
+            transition: $transition-ease-in-out;
+        }
+    }
+}
+
+.grid-photos{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    margin: 20px 0;
+    gap: 10px;
+}
