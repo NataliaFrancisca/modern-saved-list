@@ -7,19 +7,14 @@ import { getUserCookie } from '../utils/local-storage/save-user';
 import PrivateRoute from './private-route';
 import DashboardNav from '../components/dashboard-nav';
 import Loader from '../components/loader';
+import { useRouter } from 'next/navigation';
 
 const Dashboard = () => {
   const userInformation = getUserCookie();
+  const router = useRouter();
 
   const [toggleInput, setToggleInput] = useState(true);
   const [searchData, setSearchData] = useState('');
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (userInformation) {
-      setLoading(!loading);
-    }
-  }, []);
 
   const onToggleInputSearch = () => setToggleInput(!toggleInput);
 
@@ -35,10 +30,14 @@ const Dashboard = () => {
           />
         </button>
 
-        <img src="user-image/user-option-one.svg" alt="user illustration" />
+        <img src={userInformation.photo} alt="user illustration" />
 
         <button>
-          <img src="icon/menu.svg" alt="menu icon" />
+          <img
+            src="icon/menu.svg"
+            alt="menu icon"
+            onClick={() => router.push('/dashboard/menu')}
+          />
         </button>
       </header>
 
