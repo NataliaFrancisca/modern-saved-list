@@ -20,7 +20,7 @@ export const useLogin = (inputData: FormLogin) => {
       const firebaseLogin = await signIn(email, password);
 
       if (firebaseLogin.data) {
-        setUserCookie(firebaseLogin.data);
+        setUserCookie(firebaseLogin.data.user);
         router.push('/dashboard');
         return;
       }
@@ -42,7 +42,7 @@ export const useLogin = (inputData: FormLogin) => {
     console.log('firebaseLogin', firebaseLogin);
 
     if (firebaseLogin.data) {
-      setUserCookie(firebaseLogin.data);
+      setUserCookie(firebaseLogin.data.user);
       router.push('/dashboard');
       return;
     }
