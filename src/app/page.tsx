@@ -4,7 +4,7 @@ import AppTitle from './components/app-title';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/config';
 import { useEffect } from 'react';
-import { getUserCookie, setUserCookie } from './utils/local-storage/save-user';
+import { getUserCookie } from './utils/local-storage/save-user';
 import { User } from './types/types';
 
 export default function Home() {

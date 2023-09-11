@@ -104,6 +104,24 @@ function validateName(name:string){
     return false;
 }
 
+export function validateName2(name:string){
+  let error;
+  
+  if(name == ''){
+      error = 'Campo vazio, digite seu nome';
+  }
+
+  if(name.length < 3){
+      error = 'Seu nome deve conter mais de 3 caracteres';
+  }
+
+  if(error){
+    return error;
+  }
+
+  return false;
+}
+
 function validateEmail(email:string, fireBaseError: string|undefined) {
     if (email == '') {
       return 'Campo vazio, digite seu e-mail';

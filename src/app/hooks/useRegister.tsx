@@ -27,7 +27,7 @@ export const useRegister = (inputData: FormRegister) => {
 
       if (firebaseRegister.data) {
         await initializeDB();
-        setUserCookie(firebaseRegister.data);
+        setUserCookie(firebaseRegister.data.user);
         router.push('/dashboard');
       }
 
@@ -48,7 +48,7 @@ export const useRegister = (inputData: FormRegister) => {
 
     if (firebaseRegister.data) {
       await initializeDB();
-      setUserCookie(firebaseRegister.data);
+      setUserCookie(firebaseRegister.data.user);
       router.push('/dashboard');
     }
 
