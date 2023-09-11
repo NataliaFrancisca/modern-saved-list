@@ -1,14 +1,11 @@
-import { User } from "@/app/types/types";
-import { UserCredential } from "firebase/auth";
-import { setCookie, parseCookies } from "nookies";
+import { User } from "firebase/auth";
+import { setCookie, parseCookies, destroyCookie  } from "nookies";
 
-
-function setUserCookie(userCredential: UserCredential){
-    const user = userCredential.user;
-
+function setUserCookie(user: User){
     const userJSON = {
         displayName: user.displayName,
         email: user.email,
+        photo: user.photoURL,
         uid: user.uid
     }
 
@@ -23,6 +20,7 @@ function getUserCookie(){
 
     if (USER_DATA) {
         const result = JSON.parse(USER_DATA);
+        console.log(result)
         return result;
     } else {
         console.log('Cookie not found.');
@@ -30,4 +28,8 @@ function getUserCookie(){
     }
 }
 
-export { setUserCookie, getUserCookie };
+function deleteCookie(){
+    destroyCookie(null, 'USER_DATA');
+}
+
+export { setUserCookie, getUserCookie, deleteCookie };
