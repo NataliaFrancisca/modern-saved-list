@@ -18,18 +18,27 @@ const UpdatePhoto = () => {
 
   console.log(updatedPhoto);
   return (
-    <section className="base-page">
+    <section className="__grid-illustrations">
       <AppTitle />
 
       <form className="form-element" onSubmit={() => submitUpdateUserPhoto()}>
         <legend className="page-legend">UPDATE PHOTO.</legend>
-        <div className="grid-photos">
+        <div className="grid">
           {user_photos_options.map((photo: Photo) => (
-            <img
-              src={photo.src}
-              key={photo.id}
-              onClick={() => setUpdatedPhoto(photo)}
-            />
+            <div>
+              <input
+                type="radio"
+                id={`input-selected-image-id${photo.id}`}
+                name="selected-image"
+                onChange={() => setUpdatedPhoto(photo)}
+              />
+              <label
+                htmlFor={`input-selected-image-id${photo.id}`}
+                key={photo.id}
+              >
+                <img src={photo.src} />
+              </label>
+            </div>
           ))}
         </div>
 

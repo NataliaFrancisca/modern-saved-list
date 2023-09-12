@@ -13,7 +13,7 @@ const SaveContent = () => {
   const { error, saveContent } = useSave({ title, link, type, image });
 
   return (
-    <section className="base-page">
+    <section className="default-page">
       <AppTitle />
       <form className="form-element" onSubmit={() => saveContent()}>
         <legend className="page-legend">SAVE CONTENT</legend>

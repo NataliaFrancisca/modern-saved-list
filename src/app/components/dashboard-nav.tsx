@@ -1,32 +1,28 @@
 import Link from 'next/link';
-import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { useGetRouter } from '../hooks/useGetRouter';
 
 const DashboardNav = (props: {
-  onCloseInput: Function;
+  onToggleInput: Function;
   statusInput: boolean;
 }) => {
-  const routerSearch = useSearchParams();
-  let filtro = routerSearch.get('filter') || 'allcontent';
-
-  const applyClassName = (link: string) =>
-    filtro === link ? 'current' : 'dafult';
+  const filter = useGetRouter();
 
   useEffect(() => {
     if (props.statusInput === false) {
-      props.onCloseInput(true);
+      props.onToggleInput(true);
     }
-  }, [filtro]);
+  }, [filter]);
 
   return (
     <nav className="dashboard-nav">
-      <div className="nav-links">
+      <div className={`nav-links ${filter}`}>
         <Link
           href={{
             pathname: '/dashboard',
             query: { filter: 'allcontent' }
           }}
-          className={applyClassName('allcontent')}
+          className={'allcontent'}
         >
           ALL CONTENT
         </Link>
@@ -36,7 +32,7 @@ const DashboardNav = (props: {
             pathname: '/dashboard',
             query: { filter: 'article' }
           }}
-          className={applyClassName('article')}
+          className="article"
         >
           ARTICLE
         </Link>
@@ -46,7 +42,7 @@ const DashboardNav = (props: {
             pathname: '/dashboard',
             query: { filter: 'music' }
           }}
-          className={applyClassName('music')}
+          className="music"
         >
           MUSIC
         </Link>
@@ -56,7 +52,7 @@ const DashboardNav = (props: {
             pathname: '/dashboard',
             query: { filter: 'podcast' }
           }}
-          className={applyClassName('podcast')}
+          className="podcast"
         >
           PODCAST
         </Link>
@@ -66,7 +62,7 @@ const DashboardNav = (props: {
             pathname: '/dashboard',
             query: { filter: 'video' }
           }}
-          className={applyClassName('video')}
+          className="video"
         >
           VIDEO
         </Link>
@@ -76,7 +72,7 @@ const DashboardNav = (props: {
             pathname: '/dashboard',
             query: { filter: 'book' }
           }}
-          className={applyClassName('book')}
+          className="book"
         >
           BOOK
         </Link>
@@ -86,7 +82,7 @@ const DashboardNav = (props: {
             pathname: '/dashboard',
             query: { filter: 'others' }
           }}
-          className={applyClassName('others')}
+          className="others"
         >
           OTHERS
         </Link>

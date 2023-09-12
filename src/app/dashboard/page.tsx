@@ -1,59 +1,43 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { getUserCookie } from '../utils/local-storage/save-user';
+
+import PrivateRoute from './private-route';
 import AppTitle from '../components/app-title';
 import Filter from '../components/filter';
 import InputSearch from '../components/input-search';
-import { getUserCookie } from '../utils/local-storage/save-user';
-import PrivateRoute from './private-route';
 import DashboardNav from '../components/dashboard-nav';
-import Loader from '../components/loader';
-import { useRouter } from 'next/navigation';
+import DashboardHeader from '../components/dashboard-header';
 
 const Dashboard = () => {
   const userInformation = getUserCookie();
-  const router = useRouter();
-
   const [toggleInput, setToggleInput] = useState(true);
   const [searchData, setSearchData] = useState('');
 
   const onToggleInputSearch = () => setToggleInput(!toggleInput);
 
   return (
-    <PrivateRoute>
+    <PrivateRoute childrenClass="__dashboard">
       <AppTitle />
-      <header className="header-dashboard">
-        <button>
-          <img
-            src="icon/search.svg"
-            alt="search icon"
-            onClick={() => onToggleInputSearch()}
-          />
-        </button>
 
-        <img src={userInformation.photo} alt="user illustration" />
+      <DashboardHeader
+        userPhoto={userInformation.photo}
+        onToggleInput={onToggleInputSearch}
+      />
 
-        <button>
-          <img
-            src="icon/menu.svg"
-            alt="menu icon"
-            onClick={() => router.push('/dashboard/menu')}
-          />
-        </button>
-      </header>
-
-      <h1 className={`dashboard-user-name inputHidden-${toggleInput}`}>
+      <h1 className="__dashboard-displayName">
         OLÁ, {userInformation.displayName}!
       </h1>
 
       {!toggleInput && (
         <InputSearch
           onUpdateSearchData={setSearchData}
-          closeInput={setToggleInput}
+          onToggleInput={onToggleInputSearch}
         />
       )}
 
       <DashboardNav
-        onCloseInput={onToggleInputSearch}
+        onToggleInput={onToggleInputSearch}
         statusInput={toggleInput}
       />
 

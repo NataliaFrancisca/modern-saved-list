@@ -15,7 +15,7 @@ const Logout = () => {
   };
 
   return (
-    <section className="base-page">
+    <section className="default-page">
       <AppTitle />
 
       <form className="form-element" onSubmit={() => sumbitLogoutUser()}>

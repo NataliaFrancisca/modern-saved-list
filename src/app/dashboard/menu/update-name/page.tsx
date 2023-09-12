@@ -12,7 +12,7 @@ const UpdateName = () => {
   const { error, submitUpdateUserName } = useUpdateUser(name);
 
   return (
-    <section className="base-page">
+    <section className="default-page">
       <AppTitle />
 
       <form className="form-element" onSubmit={() => submitUpdateUserName()}>
