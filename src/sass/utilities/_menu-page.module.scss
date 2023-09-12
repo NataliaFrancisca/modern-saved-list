@@ -1,31 +1,53 @@
-.menu-options{
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin: 69px 0;
+.__menu{
+    @extend .default-page;
 
-    & a{
-        text-decoration: none;
-        color: $black-color;
-        font-weight: bold;
-        transition: $transition-ease-in-out;
+    .menu-nav{
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin: 69px 0;
 
-        &:nth-child(4){
-            color: $red-color;
+        & a{
+            text-decoration: none;
+            color: $black-color;
+            font-weight: bold;
+            transition: $transition-ease-in-out;
+
+            &:hover{
+                color: $primary-color;
+                font-weight: 800;
+                transition: $transition-ease-in-out;
+            }
         }
 
-        &:hover{
-            color: $primary-color;
-            font-weight: 800;
-            transition: $transition-ease-in-out;
+        .warning-link{
+            color: $red-color;
         }
     }
 }
 
-.grid-photos{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-    margin: 20px 0;
-    gap: 10px;
+.__grid-illustrations{
+    @extend .default-page;
+
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        margin: 20px 0;
+        gap: 10px;
+
+        & input{
+            display: none;
+        }
+
+        & label{
+            display: flex;
+        }
+
+        & input:checked ~ label > img{
+            filter: brightness(70%);
+        }
+    }
+
+
 }
