@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    margin: 29px 0;
 }
 
 .nav-links{
@@ -33,19 +34,31 @@
     .current{
         position: relative;
         padding-bottom: 20px;
+
+        &:before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%; /* Largura da imagem */
+            height: 20px; /* Altura da imagem */
+            background-image: url(/icon/waves.svg);
+            background-repeat: no-repeat;
+        }
     }
 
-    .current:before{
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%; /* Largura da imagem */
-        height: 20px; /* Altura da imagem */
-        background-image: url(/icon/waves.svg);
-        background-repeat: no-repeat;
-
+    &.ALLCONTENT > .allcontent,
+    &.ARTICLE > .article,
+    &.MUSIC > .music,
+    &.VIDEO > .video,
+    &.BOOK > .book,
+    &.PODCAST > .podcast,
+    &.OTHERS > .others
+    {
+        @extend .current;
     }
+
+
 
     &::-webkit-scrollbar {
         top: 10px;
