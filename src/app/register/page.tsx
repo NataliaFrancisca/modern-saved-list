@@ -17,7 +17,7 @@ const Register = () => {
   });
 
   return (
-    <section className="base-page">
+    <section className="default-page">
       <AppTitle />
 
       <form className="form-element" onSubmit={() => submitWithEmailPassword()}>
