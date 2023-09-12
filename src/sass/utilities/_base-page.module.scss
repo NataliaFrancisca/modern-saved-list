@@ -1,14 +1,12 @@
-.base-page{
+.default-page{
     background: $purple-light-color;
     display: flex;
     flex-direction: column;
     height: auto;
-    // justify-content: space-evenly;
     margin: auto;
     min-height: 100vh;
     padding: 20px;
     width: 100%;
-
     position: relative;
 }
 
