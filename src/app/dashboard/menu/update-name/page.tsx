@@ -1,7 +1,7 @@
 'use client';
 import AppTitle from '@/app/components/app-title';
 import ButtonDefault from '@/app/components/button-default';
-import { useUpdateUser } from '@/app/hooks/useUpdateUser';
+import { useUpdateUserName } from '@/app/hooks/useUpdateUser';
 import { getUserCookie } from '@/app/utils/local-storage/save-user';
 import { useState } from 'react';
 
@@ -9,7 +9,7 @@ const UpdateName = () => {
   const user = getUserCookie();
   const [name, setName] = useState<string>('');
 
-  const { error, submitUpdateUserName } = useUpdateUser(name);
+  const { error, submitUpdateUserName } = useUpdateUserName(name);
 
   return (
     <section className="default-page">
