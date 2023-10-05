@@ -1,7 +1,7 @@
 'use client';
 import AppTitle from '@/app/components/app-title';
 import ButtonDefault from '@/app/components/button-default';
-import { useUpdatePhoto, useUpdateUser } from '@/app/hooks/useUpdateUser';
+import { useUpdateUserPhoto } from '@/app/hooks/useUpdateUser';
 import { user_photos_options } from '@/app/utils/user-profile-photo/photos';
 import { useState } from 'react';
 
@@ -14,7 +14,7 @@ const UpdatePhoto = () => {
   const [updatedPhoto, setUpdatedPhoto] = useState<Photo>(
     user_photos_options[0]
   );
-  const { error, submitUpdateUserPhoto } = useUpdatePhoto(updatedPhoto.src);
+  const { error, submitUpdateUserPhoto } = useUpdateUserPhoto(updatedPhoto.src);
 
   console.log(updatedPhoto);
   return (

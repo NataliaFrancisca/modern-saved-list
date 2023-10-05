@@ -1,14 +1,15 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { auth } from '../firebase/config';
 
 type User = {
   displayName: string | null;
   email: string | null;
   uid: string;
+  photo?: string;
 };
 
-export const useCurrentUser = () => {
+export const useGetCurrentUser = () => {
   const [user, setUser] = useState<User>();
 
   useEffect(() => {
@@ -22,5 +23,5 @@ export const useCurrentUser = () => {
     });
   }, []);
 
-  return user;
+  return { user };
 };
