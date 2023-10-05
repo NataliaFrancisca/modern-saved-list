@@ -5,8 +5,7 @@ function setUserCookie(user: User){
     const userJSON = {
         displayName: user.displayName,
         email: user.email,
-        photo: user.photoURL,
-        uid: user.uid
+        photo: user.photoURL
     }
 
     setCookie(null, 'USER_DATA', JSON.stringify(userJSON), {
