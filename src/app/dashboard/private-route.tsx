@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getUserCookie } from '../utils/local-storage/save-user';
 import Loader from '../components/loader';
+import { useGetCurrentUser } from '../hooks/useGetCurrentUser';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase/config';
 
 interface PrivateRouteProps {
   children: React.ReactNode;
@@ -10,18 +13,16 @@ interface PrivateRouteProps {
 
 function PrivateRoute({ children, childrenClass }: PrivateRouteProps) {
   const router = useRouter();
-  const userInformation = getUserCookie();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!userInformation) {
-      router.push('/');
-      return;
-    }
-
-    if (userInformation) {
-      setLoading(!loading);
-    }
+    onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setLoading(!loading);
+      } else {
+        router.push('/');
+      }
+    });
   }, []);
 
   return loading ? (
