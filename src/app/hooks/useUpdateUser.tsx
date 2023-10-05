@@ -2,9 +2,8 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { validateName2 } from '../utils/validation/form-validation';
 import { updateUserName, updateUserPhoto } from '../firebase/auth/update';
-import { getUserCookie, setUserCookie } from '../utils/local-storage/save-user';
 
-export const useUpdateUser = (name: string) => {
+export const useUpdateUserName = (name: string) => {
   const [error, setError] = useState<string | boolean>();
 
   const router = useRouter();
@@ -18,7 +17,6 @@ export const useUpdateUser = (name: string) => {
       const result = await updateUserName(name);
 
       if (result.data) {
-        setUserCookie(result.data);
         router.back();
       }
     }
@@ -29,7 +27,7 @@ export const useUpdateUser = (name: string) => {
   return { error, submitUpdateUserName };
 };
 
-export const useUpdatePhoto = (photo: string) => {
+export const useUpdateUserPhoto = (photo: string) => {
   const [error, setError] = useState<string | boolean>();
   const router = useRouter();
 
@@ -40,7 +38,6 @@ export const useUpdatePhoto = (photo: string) => {
     const result = await updateUserPhoto(photo);
     console.log(result);
     if (result.data) {
-      setUserCookie(result.data);
       router.back();
     }
   };
