@@ -1,10 +1,11 @@
 'use client';
 import ButtonDefault from '@/app/components/button-default';
-import Modal from '@/app/components/modal';
 import { deleteCookie } from '@/app/utils/local-storage/save-user';
 import { useRouter } from 'next/router';
 
-const DeleteAccount = (props: { setModalVisibility: Function }) => {
+type CallbackFunction = (value: boolean) => void;
+
+const DeleteAccount = (props: { setModalVisibility: CallbackFunction }) => {
   const router = useRouter();
 
   const onLogoutUser = async () => {
@@ -13,15 +14,23 @@ const DeleteAccount = (props: { setModalVisibility: Function }) => {
     router.push('/register');
   };
 
+  const onCloseModal = () => {
+    props.setModalVisibility(false);
+  };
+
   return (
-    <Modal setModalVisibility={props.setModalVisibility}>
+    <section className="default-modal">
+      <button className="btn-close-modal" onClick={() => onCloseModal()}>
+        <img src="/icon/cancel.svg" />
+      </button>
+
       <form className="form-element" onSubmit={() => onLogoutUser()}>
         <label className="logout-message">
           Are you sure do you want to delete your account?
         </label>
         <ButtonDefault btnName="LOGOUT" />
       </form>
-    </Modal>
+    </section>
   );
 };
 
