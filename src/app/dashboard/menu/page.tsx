@@ -3,8 +3,15 @@ import Link from 'next/link';
 import AppTitle from '@/app/components/app-title';
 import { getUserCookie } from '@/app/utils/local-storage/save-user';
 import PrivateRoute from '../private-route';
+import Logout from './logout/page';
+import { useState } from 'react';
+import DeleteAccount from './delete-account/page';
 
 const Menu = () => {
+  const [modalLogoutVisibility, setModalLogoutVisibility] = useState(false);
+  const [modalDeleteAccountVisibility, setModalDeleteAccountVisibility] =
+    useState(false);
+
   const userInformation = getUserCookie();
 
   return (
@@ -36,24 +43,27 @@ const Menu = () => {
           UPDATE PHOTO
         </Link>
 
-        <Link
-          href={{
-            pathname: 'menu/logout'
-          }}
-        >
+        <a onClick={() => setModalLogoutVisibility(!modalLogoutVisibility)}>
           LOGOUT
-        </Link>
+        </a>
 
-        <Link
-          href={{
-            pathname: '/menu/delete-account',
-            query: { filter: 'delete-account' }
-          }}
+        <a
           className="warning-link"
+          onClick={() =>
+            setModalDeleteAccountVisibility(!modalDeleteAccountVisibility)
+          }
         >
           DELETE ACCOUNT
-        </Link>
+        </a>
       </menu>
+
+      {modalLogoutVisibility && (
+        <Logout setModalVisibility={setModalLogoutVisibility} />
+      )}
+
+      {modalDeleteAccountVisibility && (
+        <DeleteAccount setModalVisibility={setModalDeleteAccountVisibility} />
+      )}
     </PrivateRoute>
   );
 };

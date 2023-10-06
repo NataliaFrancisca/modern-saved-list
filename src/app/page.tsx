@@ -4,8 +4,6 @@ import AppTitle from './components/app-title';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/config';
 import { useEffect } from 'react';
-import { User } from './types/types';
-import { useGetCurrentUser } from './hooks/useGetCurrentUser';
 
 export default function Home() {
   const router = useRouter();
@@ -16,7 +14,6 @@ export default function Home() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
       if (currentUser) {
         router.push('/dashboard');
       } else {

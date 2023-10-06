@@ -1,36 +1,38 @@
 'use client';
 import AppTitle from '@/app/components/app-title';
 import ButtonDefault from '@/app/components/button-default';
+import Loader from '@/app/components/loader';
 import { useUpdateUserName } from '@/app/hooks/useUpdateUser';
-import { getUserCookie } from '@/app/utils/local-storage/save-user';
 import { useState } from 'react';
 
 const UpdateName = () => {
-  const user = getUserCookie();
   const [name, setName] = useState<string>('');
-
-  const { error, submitUpdateUserName } = useUpdateUserName(name);
+  const { loading, error, submitUpdateUserName } = useUpdateUserName(name);
 
   return (
     <section className="default-page">
       <AppTitle />
 
-      <form className="form-element" onSubmit={() => submitUpdateUserName()}>
-        <legend className="page-legend">UPDATE USERNAME.</legend>
+      {loading ? (
+        <Loader color={'GREEN'} />
+      ) : (
+        <form className="form-element" onSubmit={() => submitUpdateUserName()}>
+          <legend className="page-legend">UPDATE USERNAME.</legend>
 
-        <div className="group-label-input">
-          <label htmlFor="name-input">NAME:</label>
-          <input
-            type="text"
-            id="name-input"
-            placeholder={'type your new username'}
-            onChange={(e) => setName(e.target.value)}
-          />
-          {error && <span>{error}</span>}
-        </div>
+          <div className="group-label-input">
+            <label htmlFor="name-input">NAME:</label>
+            <input
+              type="text"
+              id="name-input"
+              placeholder={'type your new username'}
+              onChange={(e) => setName(e.target.value)}
+            />
+            {error && <span>{error}</span>}
+          </div>
 
-        <ButtonDefault btnName="UPDATE" />
-      </form>
+          <ButtonDefault btnName="UPDATE" />
+        </form>
+      )}
     </section>
   );
 };
