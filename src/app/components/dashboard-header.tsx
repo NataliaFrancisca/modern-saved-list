@@ -1,8 +1,10 @@
 import { useRouter } from 'next/navigation';
 
+type CallbackFunction = () => void;
+
 const DashboardHeader = (props: {
   userPhoto: string;
-  onToggleInput: Function;
+  onToggleInput: CallbackFunction;
 }) => {
   const router = useRouter();
 

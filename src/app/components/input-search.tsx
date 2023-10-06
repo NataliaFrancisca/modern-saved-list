@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+type CallbackFunction = () => void;
+type CallbackFunctionWithProps = (value: string) => void;
+
 const InputSearch = (props: {
-  onUpdateSearchData: Function;
-  onToggleInput: Function;
+  onUpdateSearchData: CallbackFunctionWithProps;
+  onToggleInput: CallbackFunction;
 }) => {
   const [searchText, setSearchText] = useState('');
   const router = useRouter();

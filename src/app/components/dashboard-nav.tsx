@@ -2,8 +2,10 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { useGetRouter } from '../hooks/useGetRouter';
 
+type CallbackFunction = (type: boolean) => void;
+
 const DashboardNav = (props: {
-  onToggleInput: Function;
+  onToggleInput: CallbackFunction;
   statusInput: boolean;
 }) => {
   const filter = useGetRouter();
@@ -12,7 +14,7 @@ const DashboardNav = (props: {
     if (props.statusInput === false) {
       props.onToggleInput(true);
     }
-  }, [filter]);
+  }, [filter, props]);
 
   return (
     <nav className="dashboard-nav">
