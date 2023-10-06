@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { getUserCookie } from '../utils/local-storage/save-user';
 
 import PrivateRoute from './private-route';
@@ -10,7 +10,10 @@ import DashboardNav from '../components/dashboard-nav';
 import DashboardHeader from '../components/dashboard-header';
 
 const Dashboard = () => {
-  const userInformation = getUserCookie();
+  const userInformation = useMemo(() => {
+    return getUserCookie();
+  }, []);
+
   const [toggleInput, setToggleInput] = useState(true);
   const [searchData, setSearchData] = useState('');
 
