@@ -1,9 +1,9 @@
-import { doc, setDoc} from "firebase/firestore";
-import { auth, db } from "../config";
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../config';
 
-export const initializeDB = async() => {
+export const initializeDB = async () => {
   const user = auth.currentUser;
-  await setDoc(doc(db, "users", `${user?.uid}`), {
+  await setDoc(doc(db, 'users', `${user?.uid}`), {
     content: []
-  })
-}
+  });
+};
