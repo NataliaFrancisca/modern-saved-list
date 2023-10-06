@@ -1,7 +1,6 @@
 'use client';
 import ButtonDefault from '@/app/components/button-default';
 import { signOutUser } from '@/app/firebase/auth/singout';
-import { deleteCookie } from '@/app/utils/local-storage/save-user';
 import { useRouter } from 'next/navigation';
 import Modal from '@/app/components/modal';
 
@@ -10,7 +9,6 @@ const Logout = (props: { setModalVisibility: Function }) => {
 
   const onLogoutUser = async () => {
     await signOutUser();
-    deleteCookie();
     router.push('/login');
   };
 
