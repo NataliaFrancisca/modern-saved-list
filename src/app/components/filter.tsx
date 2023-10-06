@@ -40,4 +40,5 @@ const Filter = React.memo((props: { searchData: string }) => {
   );
 });
 
+Filter.displayName = 'Filter';
 export default Filter;
