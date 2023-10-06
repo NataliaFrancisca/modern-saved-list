@@ -20,7 +20,7 @@ export default function Home() {
         router.push('/');
       }
     });
-  }, []);
+  }, [router]);
 
   return (
     <main className="page">
