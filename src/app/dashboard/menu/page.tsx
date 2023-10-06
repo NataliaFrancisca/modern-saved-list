@@ -61,9 +61,9 @@ const Menu = () => {
         <Logout setModalVisibility={setModalLogoutVisibility} />
       )}
 
-      {modalDeleteAccountVisibility && (
+      {/* {modalDeleteAccountVisibility && (
         <DeleteAccount setModalVisibility={setModalDeleteAccountVisibility} />
-      )}
+      )} */}
     </PrivateRoute>
   );
 };
