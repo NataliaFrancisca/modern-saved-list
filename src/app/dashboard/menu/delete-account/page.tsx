@@ -1,24 +1,23 @@
 'use client';
 import ButtonDefault from '@/app/components/button-default';
-import { signOutUser } from '@/app/firebase/auth/singout';
-import { deleteCookie } from '@/app/utils/local-storage/save-user';
-import { useRouter } from 'next/navigation';
 import Modal from '@/app/components/modal';
+import { deleteCookie } from '@/app/utils/local-storage/save-user';
+import { useRouter } from 'next/router';
 
-const Logout = (props: { setModalVisibility: Function }) => {
+const DeleteAcount = (props: { setModalVisibility: Function }) => {
   const router = useRouter();
 
   const onLogoutUser = async () => {
-    await signOutUser();
+    // await signOutUser();
     deleteCookie();
-    router.push('/login');
+    router.push('/register');
   };
 
   return (
     <Modal setModalVisibility={props.setModalVisibility}>
       <form className="form-element" onSubmit={() => onLogoutUser()}>
         <label className="logout-message">
-          Are you sure do you want to logout?
+          Are you sure do you want to delete your account?
         </label>
         <ButtonDefault btnName="LOGOUT" />
       </form>
@@ -26,4 +25,4 @@ const Logout = (props: { setModalVisibility: Function }) => {
   );
 };
 
-export default Logout;
+export default DeleteAcount;
