@@ -1,6 +1,5 @@
 import { useRouter } from 'next/navigation';
 import { FormContent } from '../types/types';
-import Image from 'next/image';
 
 const Content = (props: { data: FormContent }) => {
   const iconPath = `icon/${props.data.type.toLowerCase()}.svg`;
