@@ -5,7 +5,7 @@ import { getUserCookie } from '@/app/utils/local-storage/save-user';
 import PrivateRoute from '../private-route';
 import Logout from './logout/page';
 import { useState } from 'react';
-import DeleteAcount from './delete-account/page';
+import DeleteAccount from './delete-account/page';
 
 const Menu = () => {
   const [modalLogoutVisibility, setModalLogoutVisibility] = useState(false);
@@ -62,7 +62,7 @@ const Menu = () => {
       )}
 
       {modalDeleteAccountVisibility && (
-        <DeleteAcount setModalVisibility={setModalDeleteAccountVisibility} />
+        <DeleteAccount setModalVisibility={setModalDeleteAccountVisibility} />
       )}
     </PrivateRoute>
   );

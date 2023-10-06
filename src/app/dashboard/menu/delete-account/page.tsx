@@ -4,7 +4,7 @@ import Modal from '@/app/components/modal';
 import { deleteCookie } from '@/app/utils/local-storage/save-user';
 import { useRouter } from 'next/router';
 
-const DeleteAcount = (props: { setModalVisibility: Function }) => {
+const DeleteAccount = (props: { setModalVisibility: Function }) => {
   const router = useRouter();
 
   const onLogoutUser = async () => {
@@ -25,4 +25,4 @@ const DeleteAcount = (props: { setModalVisibility: Function }) => {
   );
 };
 
-export default DeleteAcount;
+export default DeleteAccount;
