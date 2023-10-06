@@ -8,8 +8,8 @@ export function filterUsingSearch(data: Array<FormContent>, search: string) {
 }
   
 export function filterUsingTypes(data: Array<FormContent>, filter: string) {
-    return filter === 'ALLCONTENT'
-      ? data
-      : data.filter((content: FormContent) => content.type == filter);
+  return filter === 'ALLCONTENT'
+    ? data
+    : data.filter((content: FormContent) => content.type == filter);
 }
   
