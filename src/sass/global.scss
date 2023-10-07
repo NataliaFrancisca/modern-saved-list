@@ -6,16 +6,10 @@
 @import 'base/reset.module';
 @import 'base/base.module';
 
-@import 'utilities/page.module';
-@import 'utilities/base-page.module';
-@import 'utilities/dashboard-page.module';
-@import 'utilities/menu-page.module';
-@import 'utilities/modal.module';
 
-@import 'components/app-title.module';
-@import 'components/button-default.module';
-@import 'components/form.module';
-@import 'components/dashboard-nav.module';
-@import 'components/filter.module';
-@import 'components/content.module';
-@import 'components/loader.module';
+// LAYOUTS
+@import 'layout/home.module';
+
+// COMPONENTS
+@import 'components/app-name.module';
+@import 'components/default-button.module';

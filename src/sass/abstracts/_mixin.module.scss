@@ -1,10 +1,20 @@
-@mixin flexCenter{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@mixin contentBorder{
-    border: 2px solid $black-color;
-    border-radius: 4px;
+@mixin contentBorder {
+  border: 2px solid $black-color;
+  border-radius: 4px;
+}
+
+@mixin defaultPageLayout{
+  width: 100%;
+  margin: auto;
+  justify-content: space-between;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
 }
