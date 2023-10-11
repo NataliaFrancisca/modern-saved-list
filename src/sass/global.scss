@@ -7,9 +7,12 @@
 @import 'base/base.module';
 
 
-// LAYOUTS
-@import 'layout/home.module';
+// PAGES
+@import 'pages/home.module';
+@import 'pages/login.module';
+@import 'pages/register.module';
 
 // COMPONENTS
 @import 'components/app-name.module';
 @import 'components/default-button.module';
+@import 'components/form.module';
