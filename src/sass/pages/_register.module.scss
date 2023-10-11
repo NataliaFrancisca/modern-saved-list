@@ -1,0 +1,5 @@
+.register-page{
+    @include defaultPageLayout;
+
+    background-color: $purple-light-color;
+}
