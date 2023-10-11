@@ -11,7 +11,7 @@ export default function Home() {
   }
 
   return (
-    <main className="home-component">
+    <main className="home-page">
       <AppName />
 
       <img
