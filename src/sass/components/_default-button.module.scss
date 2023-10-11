@@ -1,21 +1,21 @@
-.defaultButton-component{
-    width: 248px;
-    padding: 20px 0px;
-    display: flex;
-    align-self: flex-end;
-    justify-content: center;
+.defaultButton-component {
+  width: 248px;
+  padding: 20px 0px;
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
 
-    border-radius: 12px;
-    border: 2px solid #202020;
-    background: $secondary-color;
-    box-shadow: 7px 8px 0px 0px $black-color;
+  border-radius: 12px;
+  border: 2px solid #202020;
+  background: $secondary-color;
+  box-shadow: 7px 8px 0px 0px $black-color;
 
-    color: $black-color;
-    font-size: 18px;
-    font-weight: 700;
-    text-align: center;
+  color: $black-color;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
 
-    &._google{
-        background-color: $dark-orange-color;
-    }
+  &._google {
+    background-color: $dark-orange-color;
+  }
 }
