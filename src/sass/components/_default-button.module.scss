@@ -1,9 +1,9 @@
 .defaultButton-component{
-    max-width: 248px;
-    width: auto;
-    padding: 20px 60px;
+    width: 248px;
+    padding: 20px 0px;
     display: flex;
     align-self: flex-end;
+    justify-content: center;
 
     border-radius: 12px;
     border: 2px solid #202020;
@@ -13,4 +13,9 @@
     color: $black-color;
     font-size: 18px;
     font-weight: 700;
+    text-align: center;
+
+    &._google{
+        background-color: $dark-orange-color;
+    }
 }
