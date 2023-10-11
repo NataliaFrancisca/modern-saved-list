@@ -1,5 +1,5 @@
 export interface IButton {
     message: string;
-    buttonEvent: (value?:string | boolean) => void  
+    buttonEvent?: (value?:string | boolean) => void
 }
 
