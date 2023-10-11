@@ -1,5 +1,6 @@
-.home-component{
+.home-page{
     @include defaultPageLayout();
+    height: 100vh;
 
     & .home_illustration{
         display: flex;
