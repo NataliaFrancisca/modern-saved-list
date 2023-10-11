@@ -3,7 +3,7 @@ import DefaultButton from '../component/default-button';
 
 const Register = () => {
   return (
-    <main className="register-page">
+    <main className="default-page">
       <AppName />
 
       <form className="form-component">
