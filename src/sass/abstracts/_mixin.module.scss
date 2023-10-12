@@ -9,11 +9,11 @@
   border-radius: 4px;
 }
 
-@mixin defaultPageLayout{
+@mixin defaultPageLayout {
   width: 100%;
   margin: auto;
   justify-content: space-between;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 30px;

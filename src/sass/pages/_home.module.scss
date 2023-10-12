@@ -1,0 +1,10 @@
+.home-page {
+  @include defaultPageLayout();
+  height: 100vh;
+
+  & .home_illustration {
+    display: flex;
+    height: 64%;
+    margin: 0 auto;
+  }
+}

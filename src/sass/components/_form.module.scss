@@ -1,0 +1,85 @@
+.form-component {
+  display: flex;
+  flex-direction: column;
+
+  legend {
+    color: $black-color;
+    font-size: 1.12em;
+    font-weight: 800;
+    margin: 30px 0 20px 0;
+    text-decoration-line: underline;
+    text-align: end;
+  }
+
+  button {
+    width: 100%;
+
+    &.defaultButton-component {
+      margin-top: 25px;
+      margin-bottom: 26px;
+    }
+
+    &._google {
+      margin-top: 20px;
+      margin-bottom: 26px;
+    }
+  }
+
+  span.txt-or {
+    color: $black-color;
+    font-size: 1.12em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  span.form-link-message {
+    color: $black-color;
+    font-size: 0.9em;
+    font-weight: 700;
+    margin: 10px 0;
+    text-align: center;
+
+    & a {
+      color: $blue-color;
+      font-weight: 900;
+      text-decoration-line: underline;
+    }
+  }
+}
+
+.form-group {
+  align-self: center;
+  color: $black-color;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0;
+  width: 100%;
+
+  & label {
+    font-size: 1.12em;
+    font-weight: 700;
+  }
+
+  & input {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid $black-color;
+    height: 44px;
+    padding: 10px 16px;
+    width: 100%;
+  }
+}
+
+.error-login_google {
+  font-size: 1em;
+  font-weight: bold;
+  color: $black-color;
+  margin: 10px 0;
+  font-style: italic;
+
+  background-color: $dark-orange-color;
+  padding: 10px;
+  border-radius: 4px;
+  border: solid $black-color 2px;
+}

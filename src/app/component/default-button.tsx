@@ -1,14 +1,18 @@
 import { IButton } from '../ts/interfaces';
 
 const DefaultButton = (obj: IButton) => {
-  return (
-    <button
-      className="defaultButton-component"
-      onClick={() => obj.buttonEvent()}
-    >
-      {obj.message}
-    </button>
-  );
+  if (obj.buttonEvent == undefined) {
+    return <button className="defaultButton-component">{obj.message}</button>;
+  } else {
+    return (
+      <button
+        className="defaultButton-component"
+        onClick={() => obj.buttonEvent && obj.buttonEvent()}
+      >
+        {obj.message}
+      </button>
+    );
+  }
 };
 
 export default DefaultButton;
