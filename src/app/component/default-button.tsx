@@ -1,8 +1,12 @@
-import { IButton } from '../ts/interfaces';
+import { IButton } from '../../ts/interfaces';
 
 const DefaultButton = (obj: IButton) => {
   if (obj.buttonEvent == undefined) {
-    return <button className="defaultButton-component">{obj.message}</button>;
+    return (
+      <button className="defaultButton-component" type="submit">
+        {obj.message}
+      </button>
+    );
   } else {
     return (
       <button
