@@ -1,5 +1,5 @@
-import { TLoginForm } from "@/ts/types";
-import { validateEmail, validatePassword } from "./validations-form";
+import { TLoginForm, TRegisterForm } from "@/ts/types";
+import { validateEmail, validatePassword, validateName } from "./validate-inputs";
 
 function validateFormLogin(login: TLoginForm, firebase?: string){
 
@@ -13,5 +13,18 @@ function validateFormLogin(login: TLoginForm, firebase?: string){
   return { hasError, objError };
 }
 
+function validateFormRegister(register: TRegisterForm, firebase?: string){
 
-export { validateFormLogin }
+  const objError = {
+    name: validateName(register.name),
+    email: validateEmail(register.email, firebase),
+    password: validatePassword(register.password, firebase)
+  }
+
+  const hasError = Object.values(objError).some((value) => value);
+  
+  return { hasError, objError }
+}
+
+
+export { validateFormLogin, validateFormRegister }
