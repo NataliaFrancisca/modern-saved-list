@@ -25,7 +25,7 @@ const Register = () => {
 
         {error?.google && (
           <span className="error-login_google">
-            PROBLEM DOING LOGIN WITH GOOGLE, <br /> TRY AGAIN
+            PROBLEM DOING REGISTER WITH GOOGLE, <br /> TRY AGAIN
           </span>
         )}
 
@@ -37,6 +37,7 @@ const Register = () => {
             id="input-name"
             onChange={(e) => setName(e.target.value)}
           />
+          {error && <span>{error.name}</span>}
         </fieldset>
 
         <fieldset className="form-group">
@@ -47,6 +48,7 @@ const Register = () => {
             id="input-email"
             onChange={(e) => setEmail(e.target.value)}
           />
+          {error && <span>{error.email}</span>}
         </fieldset>
 
         <fieldset className="form-group">
@@ -57,6 +59,7 @@ const Register = () => {
             id="input-password"
             onChange={(e) => setPassword(e.target.value)}
           />
+          {error && <span>{error.password}</span>}
         </fieldset>
 
         <DefaultButton message="REGISTER" />
