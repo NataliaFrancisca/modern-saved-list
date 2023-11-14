@@ -10,7 +10,7 @@ import { auth } from '../config';
 const provider = new GoogleAuthProvider();
 
 type UserRegister = {
-  displayName: string;
+  name: string;
   email: string;
   password: string;
 };
@@ -25,7 +25,7 @@ export async function signUp(user: UserRegister) {
     const userResponse = response.user;
 
     updateProfile(userResponse, {
-      displayName: user.displayName
+      displayName: user.name
     });
 
     return {
