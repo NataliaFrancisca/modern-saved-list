@@ -9,3 +9,15 @@ export type TErrorLoginForm = {
     google?: string | boolean;
 };
   
+export type TRegisterForm = {
+    name: string;
+    email: string;
+    password: string;
+}
+
+export type TErrorRegisterForm = {
+    name: string | boolean;
+    email: string | boolean;
+    password: string | boolean;
+    google?: string | boolean;
+}
