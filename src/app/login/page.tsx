@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { UseLogin } from '@/hooks/useLogin';
 import AppName from '../component/app-name';
 import DefaultButton from '../component/default-button';
+import Link from 'next/link';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -58,9 +59,9 @@ const Login = () => {
 
         <span className="form-link-message">
           NEW HERE?{' '}
-          <a className="txt-link" href="/register">
+          <Link href="/register" className="txt-link">
             REGISTER
-          </a>
+          </Link>
         </span>
       </form>
     </main>
