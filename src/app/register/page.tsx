@@ -4,13 +4,14 @@ import AppName from '../component/app-name';
 import DefaultButton from '../component/default-button';
 import { UseRegister } from '@/hooks/useRegister';
 import Link from 'next/link';
+import Loader from '../component/loader';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { error, onSubmit, onSubmitWithGoogle } = UseRegister({
+  const { error, loading, onSubmit, onSubmitWithGoogle } = UseRegister({
     name,
     email,
     password
@@ -22,6 +23,8 @@ const Register = () => {
 
       <form className="form-component" onClick={() => onSubmit()}>
         <legend>REGISTER.</legend>
+
+        {loading && <Loader color="PURPLE" />}
 
         {error?.google && (
           <span className="error-login_google">

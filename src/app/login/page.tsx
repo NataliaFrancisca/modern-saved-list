@@ -4,12 +4,16 @@ import { UseLogin } from '@/hooks/useLogin';
 import AppName from '../component/app-name';
 import DefaultButton from '../component/default-button';
 import Link from 'next/link';
+import Loader from '../component/loader';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { error, onSubmit, onSubmitWithGoogle } = UseLogin({ email, password });
+  const { error, loading, onSubmit, onSubmitWithGoogle } = UseLogin({
+    email,
+    password
+  });
 
   return (
     <main className="default-page">
@@ -17,6 +21,8 @@ const Login = () => {
 
       <form className="form-component" onClick={() => onSubmit()}>
         <legend>LOGIN.</legend>
+
+        {loading && <Loader color="PURPLE" />}
 
         {error?.google && (
           <span className="error-login_google">

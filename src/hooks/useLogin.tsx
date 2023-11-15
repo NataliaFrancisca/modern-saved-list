@@ -2,13 +2,17 @@ import { signIn, signInWithGoogle } from '@/firebase/auth/signin';
 import { TErrorLoginForm, TLoginForm } from '@/ts/types';
 import { validateFormLogin } from '@/utils/form-validations/validate-form';
 import { setUserCookie } from '@/utils/nookies/save-user';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export const UseLogin = (loginForm: TLoginForm) => {
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<TErrorLoginForm>();
+  const router = useRouter();
 
   const onSubmit = async () => {
     event?.preventDefault();
+    setLoading(true);
     const validateResult = validateFormLogin(loginForm);
     setError(validateResult.objError);
 
@@ -17,6 +21,7 @@ export const UseLogin = (loginForm: TLoginForm) => {
 
       if (firebaseLogin.data) {
         setUserCookie(firebaseLogin.data.user);
+        router.push('/dashboard');
         return;
       }
 
@@ -29,9 +34,12 @@ export const UseLogin = (loginForm: TLoginForm) => {
         return;
       }
     }
+
+    setLoading(false);
   };
 
   const onSubmitWithGoogle = async () => {
+    setLoading(true);
     event?.preventDefault();
     const firebaseLogin = await signInWithGoogle();
 
@@ -48,7 +56,9 @@ export const UseLogin = (loginForm: TLoginForm) => {
       });
       return;
     }
+
+    setLoading(false);
   };
 
-  return { error, onSubmit, onSubmitWithGoogle };
+  return { error, loading, onSubmit, onSubmitWithGoogle };
 };
