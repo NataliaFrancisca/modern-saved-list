@@ -19,10 +19,12 @@ const Login = () => {
     <main className="default-page">
       <AppName />
 
-      <form className="form-component" onClick={() => onSubmit()}>
+      <form className="form-component" onSubmit={() => onSubmit()}>
         <legend>LOGIN.</legend>
 
-        {loading && <Loader color="PURPLE" />}
+        {!error && loading && <p>LOGIN WAS SUCCESS</p>}
+
+        {loading && !error && <Loader color="PURPLE" />}
 
         {error?.google && (
           <span className="error-login_google">
@@ -34,8 +36,8 @@ const Login = () => {
           <label htmlFor="email-input">Email:</label>
           <input
             type="email"
-            required
             id="email-input"
+            placeholder="type your e-mail"
             onChange={(e) => setEmail(e.target.value)}
           />
           {error && <span>{error.email}</span>}
@@ -45,8 +47,8 @@ const Login = () => {
           <label htmlFor="password-input">Password:</label>
           <input
             type="password"
-            required
             id="password-input"
+            placeholder="type your password"
             onChange={(e) => setPassword(e.target.value)}
           />
           {error && <span>{error.password}</span>}
