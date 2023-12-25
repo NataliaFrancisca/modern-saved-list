@@ -6,10 +6,6 @@ import DefaultButton from './component/default-button';
 export default function Home() {
   const router = useRouter();
 
-  function onNavigation() {
-    router.push('/register');
-  }
-
   return (
     <main className="home-page">
       <AppName />
@@ -19,7 +15,10 @@ export default function Home() {
         src="./illustration/illustration-small-size.svg"
       />
 
-      <DefaultButton message="GET STARTED" buttonEvent={onNavigation} />
+      <DefaultButton
+        message="GET STARTED"
+        buttonEvent={() => router.push('/register')}
+      />
     </main>
   );
 }
