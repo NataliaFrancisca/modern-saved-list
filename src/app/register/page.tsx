@@ -21,7 +21,7 @@ const Register = () => {
     <main className="default-page">
       <AppName />
 
-      <form className="form-component" onClick={() => onSubmit()}>
+      <form className="form-component" onSubmit={() => onSubmit()}>
         <legend>REGISTER.</legend>
 
         {loading && <Loader color="PURPLE" />}
