@@ -1,0 +1,15 @@
+.__dashboard{
+    @include defaultPageLayout();
+
+    &-displayname {
+        color: $black-color;
+        font-size: 28px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+    
+        &.inputHidden-true {
+          margin-bottom: 58px;
+        }
+    }
+}
