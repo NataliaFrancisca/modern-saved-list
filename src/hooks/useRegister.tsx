@@ -32,6 +32,7 @@ export const UseRegister = (registerForm: TRegisterForm) => {
         );
 
         setError(validateResult.objError);
+        setLoading(false);
         return;
       }
     }
@@ -56,6 +57,7 @@ export const UseRegister = (registerForm: TRegisterForm) => {
         password: false,
         google: 'Something wrong with Google Login, try again'
       });
+      setLoading(false);
       return;
     }
 
