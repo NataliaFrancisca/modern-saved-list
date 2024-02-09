@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
-import '../sass/global.scss';
+import "./global.scss";
 
 export const metadata: Metadata = {
   title: 'ONE. MODERN LIST',
