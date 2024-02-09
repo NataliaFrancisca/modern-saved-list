@@ -1,0 +1,74 @@
+.__dashboard-nav{
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 29px 0;
+
+    & .nav-links{
+        display: grid;
+        grid-template-columns: repeat(7, auto);
+        justify-content: space-between;
+        overflow-x: scroll;
+        position: relative;
+        scroll-behavior: smooth;
+        width: 100vw;
+
+        & a {
+            color: $black-color;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+            margin: 0 10px;
+        
+            &:first-child {
+              margin-left: 0;
+            }
+        
+            &:last-child {
+              margin-right: 0;
+            }
+        }
+
+        & .current{
+            position: relative;
+            padding-bottom: 20px;
+    
+            &:before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%; /* Largura da imagem */
+                height: 20px; /* Altura da imagem */
+                background-image: url(/icon/waves.svg);
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
+    & .nav-links {
+        &.ALLCONTENT > .allcontent,
+        &.ARTICLE > .article,
+        &.MUSIC > .music,
+        &.VIDEO > .video,
+        &.BOOK > .book,
+        &.PODCAST > .podcast,
+        &.OTHERS > .others {
+            @extend .current;
+        }
+
+        &::-webkit-scrollbar {
+            top: 10px;
+            height: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $primary-color;
+        }
+    }
+}
