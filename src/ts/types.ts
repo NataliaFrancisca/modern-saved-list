@@ -21,3 +21,11 @@ export type TErrorRegisterForm = {
     password: string | boolean;
     google?: string | boolean;
 }
+
+export type TContent = {
+    title: string;
+    link: string;
+    type: string;
+    image?: string;
+}
+
