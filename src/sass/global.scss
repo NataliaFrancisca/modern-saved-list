@@ -8,10 +8,16 @@
 
 // PAGES
 @import 'pages/home.module';
-@import 'pages/default-page.module';
+@import 'pages/default.module';
+@import 'pages/dashboard.module';
 
 // COMPONENTS
 @import 'components/app-name.module';
 @import 'components/default-button.module';
 @import 'components/form.module';
 @import 'components/loader.module';
+@import 'components/dashboard-header.module';
+@import 'components/dashboard-input.module';
+@import 'components/dashboard-nav.module';
+@import 'components/dashboard-view.module';
+@import 'components/content-module';

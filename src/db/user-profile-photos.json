@@ -1,0 +1,48 @@
+{
+    "photos": [
+        {
+            "id": 0,
+            "src": "/user-image/user-option-one.svg"
+        },
+    
+        {
+            "id": 1,
+            "src": "/user-image/user-option-two.svg"
+        },
+    
+        {
+            "id": 2,
+            "src": "/user-image/user-option-three.svg"
+        },
+    
+        {
+            "id": 3,
+            "src": "/user-image/user-option-four.svg"
+        },
+    
+        {
+            "id": 4,
+            "src": "/user-image/user-option-five.svg"
+        },
+    
+        {
+            "id": 5,
+            "src": "/user-image/user-option-six.svg"
+        },
+    
+        {
+            "id": 6,
+            "src": "/user-image/user-option-seven.svg"
+        },
+    
+        {
+            "id": 7,
+            "src": "/user-image/user-option-eight.svg"
+        },
+    
+        {
+            "id": 8,
+            "src": "/user-image/user-option-nine.svg"
+        }
+    ]
+}

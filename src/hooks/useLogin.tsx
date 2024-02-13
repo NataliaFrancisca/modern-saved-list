@@ -31,6 +31,7 @@ export const UseLogin = (loginForm: TLoginForm) => {
           firebaseLogin.message
         );
         setError(validateResult.objError);
+        setLoading(false);
         return;
       }
     }
@@ -54,6 +55,7 @@ export const UseLogin = (loginForm: TLoginForm) => {
         password: false,
         google: 'Something wrong with Google Login, try again'
       });
+      setLoading(false);
       return;
     }
 

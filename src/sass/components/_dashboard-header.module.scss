@@ -1,0 +1,26 @@
+.__dashboard-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 23px 0;
+
+    button {
+      background-color: transparent;
+      cursor: pointer;
+      height: max-content;
+      border-radius: 4px;
+      padding: 10px;
+
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
+
+    button:first-child {
+      margin-right: 38px;
+    }
+
+    button:last-child {
+      margin-left: 38px;
+    }
+}

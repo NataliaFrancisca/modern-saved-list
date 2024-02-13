@@ -1,6 +1,7 @@
 .home-page {
-  @include defaultPageLayout();
+  @include defaultPageLayout($primary-color);
   height: 100vh;
+  justify-content: space-between;
 
   & .home_illustration {
     display: flex;
