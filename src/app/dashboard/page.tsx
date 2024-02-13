@@ -12,7 +12,6 @@ const Dashboard = () => {
     return getUserCookie();
   },[]);
 
-
   const [toggleInput, setToggleInput] = useState(true);
   const [searchData, setSearchData] = useState('');
 
@@ -31,7 +30,7 @@ const Dashboard = () => {
           />
         </button>
 
-        <img src={userInformation.photo} alt="user illustration" />
+        <img src={userInformation.photo ? userInformation.photo : '/user-image/user-option-one.svg'} alt="user illustration" />
 
         <button>
           <img
